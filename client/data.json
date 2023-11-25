@@ -288,24 +288,18 @@
   "usertable": [
     {
       "id": 1,
-      "fullName": "",
-      "gmail": "",
-      "phone": ""
-    },
-    {
-      "id": 1,
       "fullName": "ramzi abulail",
       "gmail": "ramzi@gmail.com",
       "phone": "0777488060"
     },
     {
-      "id": 1,
+      "id": 2,
       "fullName": "melad abulail",
       "gmail": "melad@gmail.com",
       "phone": "0777488060"
     },
     {
-      "id": 1,
+      "id": 3,
       "fullName": "fouad abulail",
       "gmail": "fouad@gmail.com",
       "phone": "0777488060"
@@ -314,45 +308,15 @@
       "fullName": "Ramzi abulail",
       "gmail": "ramzi@gmail.com",
       "phone": "0777488060",
-      "id": 2
-    },
-    {
-      "fullName": "Ramzi abulail",
-      "gmail": "ramzi@gmail.com",
-      "phone": "0777488060",
-      "id": 3
-    },
-    {
-      "fullName": "Ramzi abulail",
-      "gmail": "ramzi@gmail.com",
-      "phone": "0777488060",
       "id": 4
-    },
-    {
-      "fullName": "cc",
-      "gmail": "ccc",
-      "phone": "cccc",
-      "id": 5
-    },
-    {
-      "fullName": "Ramzi abulail",
-      "gmail": "ramzi@gmail.com",
-      "phone": "0777488060",
-      "id": 6
     }
   ],
   "AdmainUser": [
     {
-      "id": 1,
-      "fullName": "",
-      "gmail": "",
-      "phone": ""
-    },
-    {
-      "fullName": "",
-      "gmail": "",
-      "phone": "",
-      "id": 2
+      "fullName": "Ramzi abulail",
+      "gmail": "ramziabulail84@gmail.com",
+      "phone": "0777488060",
+      "id": 1
     }
   ],
   "ServicesTable": [
@@ -363,6 +327,14 @@
     {
       "Services": "cleaning office ",
       "id": 2
+    },
+    {
+      "Services": "company cleaning ",
+      "id": 3
+    },
+    {
+      "Services": "comany cleanming ",
+      "id": 4
     }
   ]
 }

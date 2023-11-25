@@ -50,13 +50,14 @@ function App() {
       <BrowserRouter>
 
         <Routes>
-
-          {/* <Route path='/Dashboard' element={<Dashboard />} /> */}
-
+        <Route path='/UserTable' element={<UserTable />} />
+        <Route path='/AdmainUser' element={<AdmainUser />} />
+        <Route path='/ServicesTable' element={<ServicesTable />} />
         </Routes>
         <Dashboard />
         {/* <Users /> */}
-        <ServicesTable/>
+        {/* <ServicesTable/> */}
+      
       </BrowserRouter>
 
 

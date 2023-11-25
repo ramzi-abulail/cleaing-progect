@@ -81,13 +81,13 @@ const ServicesTable = () => {
             row.Services
           )}
         </td>
-        <td className="border px-4 py-2">
+        <td className="border px-4 py-4 ">
           {editableRow === rowIndex ? (
-            <button onClick={() => handleSave(rowIndex)}>Save</button>
+            <button onClick={() => handleSave(rowIndex)} className='bg-blue-500 mr-4 rounded p-2'>Save</button>
           ) : (
             <>
-              <button onClick={() => handleEdit(rowIndex)}>Edit</button>
-              <button onClick={() => handleDelete(rowIndex)}>Delete</button>
+              <button onClick={() => handleEdit(rowIndex)} className='bg-green-500 mr-4 rounded p-2'>Edit</button>
+              <button onClick={() => handleDelete(rowIndex)} className='bg-red-500 rounded p-2'>Delete</button>
             </>
           )}
         </td>
@@ -97,13 +97,13 @@ const ServicesTable = () => {
 
   return (
     <div>
-      <div className="flex justify-center items-center mb-4 mt-10">
-        <h2 className="text-xl font-semibold mr-4">Services Table</h2>
+      <div className="flex justify-center items-center mb-4 mt-10 border">
+        <h2 className="text-xl font-semibold mr-4 mb-4">Services Table</h2>
         <div className="flex items-center">
           <input
             type="text"
             placeholder="Services"
-            className="px-2 py-1 mr-2"
+            className="px-2 py-1 mr-2 "
             value={newService}
             onChange={handleChange}
           />
@@ -119,7 +119,7 @@ const ServicesTable = () => {
             <th className="border px-4 py-2">Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className='font-bold'>
           {generateRows()}
         </tbody>
       </table>
