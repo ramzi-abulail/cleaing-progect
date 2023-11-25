@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+
 
 const Profile = () => {
   const [photo, setPhoto] = useState(null);
@@ -26,13 +28,18 @@ const Profile = () => {
       <div className="bg-gray-800 text-white w-64 h-screen flex flex-col">
         <div className="p-4">
           <h1 className="text-2xl font-bold">Sidebar</h1>
-          <ul className="mt-4">
-            <li className="py-2 hover:bg-gray-700 cursor-pointer">Profile</li>
-            <li className="py-2 hover:bg-gray-700 cursor-pointer">Edit Profile</li>
-            <li className="py-2 hover:bg-gray-700 cursor-pointer">Order</li>
-            <li className="py-2 hover:bg-gray-700 cursor-pointer">back to home page</li>
-            {/* Add more sidebar items as needed */}
-          </ul>
+          <ul className="space-y-2 font-medium">
+      <li className="py-2 hover:bg-gray-700 cursor-pointer">
+        <Link to="/Profile">Profile</Link>
+      </li>
+      <li className="py-2 hover:bg-gray-700 cursor-pointer">
+        <Link to="/ProfileForm">Edit Profile</Link>
+      </li>
+      <li className="py-2 hover:bg-gray-700 cursor-pointer">
+        <Link to="/OurServices">Order</Link>
+      </li>
+      {/* Add more Link components for other routes */}
+    </ul>
         </div>
       </div>
       <main className="flex-1 bg-gray-200 p-8">

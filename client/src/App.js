@@ -20,13 +20,14 @@ import UserTable from './JSX/UserTable';
 import AdmainUser from './JSX/AdmainUser';
 import Users from './JSX/Users';
 import ServicesTable from './JSX/ServicesTable';
+import Profile from './JSX/Profile';
 
 
 
 function App() {
   return (
     <div>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <NavBar />
         <Routes>
           <Route path='/' element={<Home />} />
@@ -39,26 +40,24 @@ function App() {
           <Route path='/SchoolForm' element={<SchoolForm />} />
           <Route path='/Login' element={<Login />} />
           <Route path='/Signup' element={<Signup />} />
-          <Route path='/ProfilePage' element={<ProfilePage />} />
+          <Route path='/Profile' element={<Profile />} />
+          <Route path='/OurServices' element={<OurServices />} />
+
         </Routes>
-        <Dashboard/>
+
         <Footer />
-      </BrowserRouter> */}
+      </BrowserRouter>
 
 
 
-      <BrowserRouter>
-
+      {/* <BrowserRouter>
         <Routes>
-        <Route path='/UserTable' element={<UserTable />} />
-        <Route path='/AdmainUser' element={<AdmainUser />} />
-        <Route path='/ServicesTable' element={<ServicesTable />} />
+          <Route path='/UserTable' element={<UserTable />} />
+          <Route path='/AdmainUser' element={<AdmainUser />} />
+          <Route path='/ServicesTable' element={<ServicesTable />} />
         </Routes>
         <Dashboard />
-        {/* <Users /> */}
-        {/* <ServicesTable/> */}
-      
-      </BrowserRouter>
+      </BrowserRouter> */}
 
 
 
