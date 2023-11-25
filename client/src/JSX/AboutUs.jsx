@@ -6,7 +6,7 @@ import img9 from '../img/img9.png';
 
 function AboutUs() {
     return (
-        <div className='bg-blue-100'>
+        <div className='bg-white'>
             <section className="flex items-center bg-whitelg:h-screen font-poppins dark:bg-gray-800 mt-5">
                 <div className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
                     <div className="px-4 mb-10 md:text-center md:mb-20">

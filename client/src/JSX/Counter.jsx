@@ -6,39 +6,42 @@ export default class Counter extends React.Component {
     super(props);
     this.state = {
       count: 0,
-      positionClicked: false,
+      positionClicked: true,
       negativeClicked: false
     };
   }
 
   onClick(isPositive) {
-    this.setState({
-      count: isPositive ? this.state.count + 1 : this.state.count - 1
-    });
+    if (isPositive) {
+      this.setState({ count: this.state.count + 1 });
+    } else {
+      if (this.state.count > 0) {
+        this.setState({ count: this.state.count - 1 });
+      }
+    }
   }
+  
 
   render() {
     return (
-      <div className=" text-center p-2 border border-black rounded-xl md:w-72  ml-10">
-        <div className="count">{this.state.count}</div>
-        <div className="counters">
-          <Button
-            className="mx-6 px-6"
-            onClick={() => {
-              this.onClick(true);
-            }}>
-            +1
-          </Button>
-          <Button
-            className="mx-6 px-6"
-            onClick={() => {
-              this.onClick(false);
-            }}
-          >
-            -1
-          </Button>
-        </div>
+
+      <div className="text-center p-2 rounded-xl md:w-40 ml-10 ">
+      <div className="grid grid-cols-3  items-center justify-center ">
+        <Button className="px-4 text-m"
+          onClick={() => {
+            this.onClick(true);
+          }}>
+          +
+        </Button>
+        <div className="count text-2xl col-span-1 ">{this.state.count}</div>
+        <Button  className="px-4 text-s"
+          onClick={() => {
+            this.onClick(false);
+          }} >
+          -
+        </Button>
       </div>
+    </div>
     );
   }
 }

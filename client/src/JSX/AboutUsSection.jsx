@@ -1,11 +1,11 @@
 import React from 'react'
 import img8 from '../img/img8.jpg';
-
+import { Link } from 'react-router-dom';
 function AboutUsSection() {
-  return (
-    <div>
+    return (
+        <div>
 
-<section className="flex items-center bg-whitelg:h-screen font-poppins bg-blue-100 mt-5">
+            <section className="flex items-center bg-whitelg:h-screen font-poppins bg-white mt-5">
                 <div className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
                     <div className="px-4 mb-10 md:text-center md:mb-20">
                         <p className="mb-2 text-3xl font-semibold text-blue-500">
@@ -30,15 +30,21 @@ function AboutUsSection() {
                                 className="relative z-40 object-cover w-full  md:h-[500px] h-40" />
                         </div>
                     </div>
-                    <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">read more </button>
-                </div>
+                    <Link to="/AboutUs" >
+                    <button  type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 ">
+                    
+                            read more
+                  
+                    </button>  
+                    </Link>           
+                       </div>
             </section>
 
 
 
 
-    </div>
-  )
+        </div>
+    )
 }
 
 export default AboutUsSection

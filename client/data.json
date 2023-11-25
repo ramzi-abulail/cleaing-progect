@@ -1,0 +1,368 @@
+{
+  "offices": [
+    {
+      "id": 1,
+      "fullName": "John Doe",
+      "phone": "123-456-7890",
+      "businessName": "ABC Inc.",
+      "numEmployees": 50,
+      "squareFootage": 1000
+    },
+    {
+      "id": 2,
+      "fullName": "Jane Smith",
+      "phone": "987-654-3210",
+      "businessName": "XYZ Corporation",
+      "numEmployees": 25,
+      "squareFootage": 750
+    },
+    {
+      "id": 3,
+      "fullName": "Ramzi abulail",
+      "phone": "0777488060",
+      "businessName": "fdsrxdtcfvgbj",
+      "numEmployees": "51-100",
+      "squareFootage": "1000-2000"
+    },
+    {
+      "id": 4,
+      "fullName": "gold",
+      "phone": "0777488060",
+      "businessName": "gold",
+      "numEmployees": "1-50",
+      "squareFootage": "1000-2000"
+    },
+    {
+      "id": 5,
+      "fullName": "Ramzi abulail",
+      "phone": "0777488060",
+      "businessName": "gold",
+      "numEmployees": "51-100",
+      "squareFootage": "1000-2000"
+    },
+    {
+      "fullName": "yousef",
+      "phone": "0777488060",
+      "businessName": "jsx",
+      "numEmployees": "51-100",
+      "squareFootage": "2001-5000",
+      "id": 6
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "ramzi@gmail.com",
+      "password": "ramzi777"
+    }
+  ],
+  "profiles": [
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "city": "",
+      "country": "",
+      "profileImage": "",
+      "phone": "",
+      "id": 1
+    },
+    {
+      "firstName": "ramzi",
+      "lastName": "abulail",
+      "email": "ramziabulail84@gmail.com",
+      "city": "Zarqa",
+      "country": "jordan",
+      "id": 2
+    },
+    {
+      "firstName": "ramzi",
+      "lastName": "abulail",
+      "email": "ramziabulail84@gmail.com",
+      "city": "Zarqa",
+      "country": "jordan",
+      "id": 3
+    },
+    {
+      "firstName": "gold ",
+      "lastName": "777",
+      "email": "ramz@gmail.com",
+      "city": "",
+      "country": "jordan",
+      "id": 4
+    },
+    {
+      "firstName": "ramzi",
+      "lastName": "abulail",
+      "email": "ramzi@gmail.com",
+      "city": "Madaba",
+      "country": "jordan",
+      "profileImage": {},
+      "id": 5
+    },
+    {
+      "firstName": "ramzi",
+      "lastName": "abulail",
+      "email": "Ramziabulail84@gmail.com",
+      "city": "Balqa",
+      "country": "jordan",
+      "profileImage": {},
+      "id": 6
+    },
+    {
+      "firstName": "ramzi",
+      "lastName": "abulail",
+      "email": "ramzi@gmail.com",
+      "city": "Tafileh",
+      "country": "jordan",
+      "profileImage": {},
+      "id": 7
+    },
+    {
+      "firstName": "yyyyyy",
+      "lastName": "vvvvvv",
+      "email": "ramzivvvvv@gmail.com",
+      "city": "Karak",
+      "country": "jordan",
+      "profileImage": {},
+      "id": 8
+    },
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "city": "",
+      "country": "",
+      "profileImage": null,
+      "id": 9
+    },
+    {
+      "firstName": "gfdcxz",
+      "lastName": "kjhgvfc",
+      "email": "ramzigtgtgtgt@gmail.com",
+      "city": "Karak",
+      "country": "jordan",
+      "profileImage": {},
+      "id": 10
+    },
+    {
+      "firstName": "dddddddddd",
+      "lastName": "dddddddddddddd",
+      "email": "dddddddddddddd@gmail.com",
+      "city": "Madaba",
+      "country": "jordan",
+      "profileImage": {},
+      "id": 11
+    },
+    {
+      "firstName": "ssssssssssssssss",
+      "lastName": "ddddddddddddddddd",
+      "email": "ramzi@gmail.com",
+      "city": "Ma'an",
+      "country": "jordan",
+      "profileImage": {},
+      "phone": "0777488060",
+      "id": 12
+    }
+  ],
+  "user": [
+    {
+      "FirstName": "",
+      "LastName": "",
+      "email": "ramzi@gmail.com",
+      "phone": "0777488060",
+      "city": "",
+      "country": "jordan",
+      "street": "rrrr",
+      "firstName": "ramzi",
+      "lastName": "abulail",
+      "id": 1
+    },
+    {
+      "firstName": "ramzi",
+      "lastName": "abulail",
+      "email": "ramzi@gmail.com",
+      "phone": "0777488060",
+      "city": "Ma'an",
+      "country": "jordan",
+      "street": "rrrr",
+      "id": 2
+    },
+    {
+      "firstName": "ramzi",
+      "lastName": "abulail",
+      "email": "ramzi@gmail.com",
+      "phone": "0777488060",
+      "city": "Ma'an",
+      "country": "jordan",
+      "street": "rrrr",
+      "id": 3
+    }
+  ],
+  "card": [
+    {
+      "name": "ramzi abulail",
+      "subject": "they cleaned my office and the cleaning was perfect",
+      "id": 16
+    },
+    {
+      "name": "asdfghj",
+      "subject": "sdfghnm",
+      "id": 17
+    },
+    {
+      "name": "dxxxx",
+      "subject": "dddddx",
+      "id": 18
+    }
+  ],
+  "company": [
+    {
+      "id": 1,
+      "fullname": "",
+      "number": "",
+      "companyName": "",
+      "city": "",
+      "streetName": ""
+    },
+    {
+      "fullname": "ramzi abulail",
+      "number": "000000",
+      "companyName": "cleanex",
+      "city": "Amman",
+      "streetName": "gggg",
+      "id": "W6ecKPL"
+    }
+  ],
+  "schools": [
+    {
+      "id": 1,
+      "fullname": "",
+      "number": "",
+      "schoolName": "",
+      "city": "",
+      "streetName": ""
+    },
+    {
+      "fullname": "ssss",
+      "number": "0777488060",
+      "schoolName": "ssssss",
+      "city": "Jerash",
+      "streetName": "gggg",
+      "id": "7WYMVfj"
+    },
+    {
+      "fullname": "ssss",
+      "number": "sssssssssssssss",
+      "schoolName": "ramzi",
+      "city": "Amman",
+      "streetName": "ggggs",
+      "id": "Sh2MbLj"
+    },
+    {
+      "fullname": "ramzi abulail",
+      "number": "000000",
+      "schoolName": "ssssss",
+      "city": "Irbid",
+      "streetName": "ggggs",
+      "id": "sf-D1Cg"
+    },
+    {
+      "fullname": "",
+      "number": "",
+      "companyName": "",
+      "city": "",
+      "streetName": "",
+      "id": "KrkxtGF"
+    },
+    {
+      "fullname": "ramzi abulail",
+      "number": "jjjjjj",
+      "companyName": "",
+      "city": "Irbid",
+      "streetName": "jjjjjjjjjjj",
+      "schoolName": "ssssssjjj",
+      "id": 2
+    }
+  ],
+  "usertable": [
+    {
+      "id": 1,
+      "fullName": "",
+      "gmail": "",
+      "phone": ""
+    },
+    {
+      "id": 1,
+      "fullName": "ramzi abulail",
+      "gmail": "ramzi@gmail.com",
+      "phone": "0777488060"
+    },
+    {
+      "id": 1,
+      "fullName": "melad abulail",
+      "gmail": "melad@gmail.com",
+      "phone": "0777488060"
+    },
+    {
+      "id": 1,
+      "fullName": "fouad abulail",
+      "gmail": "fouad@gmail.com",
+      "phone": "0777488060"
+    },
+    {
+      "fullName": "Ramzi abulail",
+      "gmail": "ramzi@gmail.com",
+      "phone": "0777488060",
+      "id": 2
+    },
+    {
+      "fullName": "Ramzi abulail",
+      "gmail": "ramzi@gmail.com",
+      "phone": "0777488060",
+      "id": 3
+    },
+    {
+      "fullName": "Ramzi abulail",
+      "gmail": "ramzi@gmail.com",
+      "phone": "0777488060",
+      "id": 4
+    },
+    {
+      "fullName": "cc",
+      "gmail": "ccc",
+      "phone": "cccc",
+      "id": 5
+    },
+    {
+      "fullName": "Ramzi abulail",
+      "gmail": "ramzi@gmail.com",
+      "phone": "0777488060",
+      "id": 6
+    }
+  ],
+  "AdmainUser": [
+    {
+      "id": 1,
+      "fullName": "",
+      "gmail": "",
+      "phone": ""
+    },
+    {
+      "fullName": "",
+      "gmail": "",
+      "phone": "",
+      "id": 2
+    }
+  ],
+  "ServicesTable": [
+    {
+      "id": 1,
+      "Services": "cleaning house"
+    },
+    {
+      "Services": "cleaning office ",
+      "id": 2
+    }
+  ]
+}
