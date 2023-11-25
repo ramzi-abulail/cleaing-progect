@@ -104,11 +104,11 @@ const AdmainUser = () => {
                 )}</td>
                 <td className="border px-4 py-2">
                     {editableRow === rowIndex ? (
-                        <button onClick={() => handleSave(rowIndex)}>Save</button>
+                        <button onClick={() => handleSave(rowIndex)} className='bg-blue-500 mr-4 rounded p-2'>Save</button>
                     ) : (
                         <>
-                            <button onClick={() => handleEdit(rowIndex)}>Edit</button>
-                            <button onClick={() => handleDelete(rowIndex)}>Delete</button>
+                            <button onClick={() => handleEdit(rowIndex)} className='bg-green-500 mr-4 rounded p-2'>Edit</button>
+                            <button onClick={() => handleDelete(rowIndex)} className='bg-red-500 rounded p-2'>Delete</button>
                         </>
                     )}
                 </td>
