@@ -3,27 +3,15 @@ import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import logo from '../img/logo.png';
 
-function Login() {
+function LoginAdmin() {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
-  const [emailError, setEmailError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    if (name === 'email') {
-      // Basic email format validation
-      const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-      if (!isValidEmail) {
-        setEmailError('Invalid email format');
-      } else {
-        setEmailError('');
-      }
-    }
-
     setFormData({
       ...formData,
       [name]: value,
@@ -32,32 +20,31 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (emailError) {
-      console.error('Invalid email format');
-      return; // Prevent submission if email format is invalid
-    }
-
     try {
-      const response = await axios.get(`http://localhost:3001/users?email=${formData.email}`);
-  
+      // Fetch user data based on the entered email
+      const response = await axios.get(`http://localhost:3001/AdmainUser?email=${formData.email}`);
+      
+      // Check if the user exists and the password matches
       if (response.data.length > 0 && response.data[0].password === formData.password) {
         console.log('Login successful!', response.data[0]);
-        localStorage.setItem('role', 2);
+        // Perform actions after successful login
+        
+
+        localStorage.setItem('role' , 1)
         navigate('/');
+     
       } else {
         console.error('Invalid credentials!');
-        // Handle incorrect credentials
       }
     } catch (error) {
       console.error('Login error:', error);
-      // Handle login errors or server issues
     }
   };
+
   return (
     <section className="bg-gray-50 dark:bg-gray-900 h-screen flex items-center justify-center">
       <div className="w-full max-w-md bg-white rounded-lg shadow-md dark:border dark:border-gray-700">
         <div className="p-6 space-y-4">
-       
           <div className="flex items-center mb-6">
             <img className="w-40 h-20 ml-32" src={logo} alt="Logo" />
           </div>
@@ -68,7 +55,7 @@ function Login() {
           <form className="space-y-4" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="block mb-1 font-medium text-gray-900 dark:text-white">
-              email:
+                Email:
               </label>
               <input
                 type="email"
@@ -110,7 +97,6 @@ function Login() {
                   Sign up
                 </Link>
               </p>
-              
             </div>
           </form>
         </div>
@@ -119,4 +105,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default LoginAdmin;

@@ -17,6 +17,12 @@ function SchoolForm() {
     schoolName: '',
     city: '',
     streetName: '',
+    numOfClassrooms: '',
+    numOfFloors: '',
+    numOfSchoolYards: '',
+    numOfRoomsForTeachers: '',
+    numOfGyms: '',
+    numOfSwimmingPools: '',
   });
 
   const handleChange = (e) => {
@@ -37,10 +43,16 @@ function SchoolForm() {
         companyName: '',
         city: '',
         streetName: '',
+        numOfClassrooms: '',
+        numOfFloors: '',
+        numOfSchoolYards: '',
+        numOfRoomsForTeachers: '',
+        numOfGyms: '',
+        numOfSwimmingPools: '',
       });
-      alert('Company information submitted successfully!');
+      alert('School information submitted successfully!');
     } catch (error) {
-      console.error('Error creating company:', error);
+      console.error('Error creating school:', error);
     }
   };
   return (
@@ -125,6 +137,11 @@ function SchoolForm() {
               placeholder="Enter street name"
             />
           </div>
+
+
+
+
+          
           {/* Submit button */}
           <button
             type="submit"

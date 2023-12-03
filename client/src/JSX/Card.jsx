@@ -71,17 +71,17 @@ const Card= () => {
     setCurrentPage(page);
   };
 
-  const pageSize = 3;
+  const pageSize = 4;
   const offset = currentPage * pageSize;
   const paginatedCards = cards.slice(offset, offset + pageSize);
   const totalPages = Math.ceil(cards.length / pageSize);
   const pageNumbers = Array.from(Array(totalPages).keys());
 
   return (
-    <div className='bg-white md:w-full'>
+    <div className='bg-white md:w-[800px] mx-auto'>
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mt-4">Your Feedback</h1>
-
+        <h1 className="text-3xl font-bold text-center mt-4 text-blue-500">Your Feedback</h1>
+  
         <form onSubmit={handleSubmit} className="flex flex-col mt-8">
           <input
             type="text"
@@ -101,30 +101,28 @@ const Card= () => {
             {editingCardId !== null ? 'Update Card' : 'Add Card'}
           </button>
         </form>
-
+  
         {/* Display Paginated Cards */}
-        <div className="mt-10 md:w-auto p-2 flex flex-row flex-wrap justify-evenly ">
+        <div className="mt-10 flex flex-wrap justify-center">
           {paginatedCards.map((card) => (
-            <div key={card.id} className="flex flex-col  bg-gray-100 border border-black rounded-lg shadow-lg md:w-80 md:h-60">
+            <div key={card.id} className="flex flex-col bg-white border rounded-lg shadow-lg w-80 h-72 p-4 m-4">
               <div className="flex items-center justify-between ml-4 mt-2">
-              
                 <h2 className="text-xl font-bold mb-2">{card.name}</h2>
               </div>
               <hr />
               <p className="mt-2 ml-4 mb-4">{card.subject}</p>
-       
-              <div className="flex items-center justify-around mt-16">
+              <div className="flex items-center justify-around mt-auto">
                 <button
                   type="button"
                   onClick={() => handleEditCard(card.id)}
-                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded"
+                  className="text-black font-bold py-2 px-4 rounded"
                 >
                   Edit
                 </button>
                 <button
                   type="button"
                   onClick={() => handleDeleteCard(card.id)}
-                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                  className="text-black font-bold py-2 px-4 rounded"
                 >
                   Delete
                 </button>
@@ -132,14 +130,16 @@ const Card= () => {
             </div>
           ))}
         </div>
-
+  
         {/* Pagination Buttons */}
         <div className="flex justify-center mt-4">
           {pageNumbers.map((page) => (
             <button
               key={page}
               onClick={() => handlePageChange(page)}
-              className={`px-3 h-8 rounded-full focus:outline-none ${currentPage === page ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'}`}
+              className={`px-3 h-8 rounded-full focus:outline-none ${
+                currentPage === page ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+              }`}
             >
               {page + 1}
             </button>

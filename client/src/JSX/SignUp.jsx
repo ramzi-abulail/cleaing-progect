@@ -1,21 +1,25 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom'
 
 const InfoForm = () => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
+    password:'',
     phone: '',
     city: '',
     country: '',
-    street: '',
+    StreetName: '',
+
   });
 
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value , password } = e.target;
     setFormData({
       ...formData,
       [name]: value,
@@ -25,22 +29,34 @@ const InfoForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:3001/user', formData);
-      console.log('you post data Successfully', response.data);
-      alert('you create account Successfully ')
-      // يمكنك هنا إضافة أكواد أخرى بعد الاستجابة من السيرفر
+      const response = await axios.post('http://localhost:3001/users', {
+        firstName: formData.firstName,
+        lastName: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        city: formData.city,
+        country: formData.country,
+        StreetName: formData.street,
+        password: formData.password
+      });
+
+      console.log('Data posted successfully', response.data.users);
+      alert('Data saved!');
+      navigate('/Login');
     } catch (error) {
-      console.error('error', error);
+      console.error('Error:', error);
     }
   };
 
+
   return (
-    <div className="max-w-md mx-auto bg-white rounded p-6">
-      <h1 className="text-xl font-bold mb-4"> sign up </h1>
+    <div className="max-w-md mx-auto bg-white rounded p-6 border shadow-xl mb-4">
+      <h1 className="text-xl font-bold mb-4">Sign up</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
-        {/* حقل الاسم الكامل */}
         <div>
-          <label htmlFor="firstName" className="block mb-1"> FirstName :</label>
+          <label htmlFor="firstName" className="block mb-1">
+            First Name:
+          </label>
           <input
             type="text"
             id="firstName"
@@ -51,9 +67,10 @@ const InfoForm = () => {
           />
         </div>
 
-        {/* حقل الاسم الأخير */}
         <div>
-          <label htmlFor="lastName" className="block mb-1"> LastName :</label>
+          <label htmlFor="lastName" className="block mb-1">
+            Last Name:
+          </label>
           <input
             type="text"
             id="lastName"
@@ -64,9 +81,10 @@ const InfoForm = () => {
           />
         </div>
 
-        {/* حقل البريد الإلكتروني */}
         <div>
-          <label htmlFor="email" className="block mb-1"> email:</label>
+          <label htmlFor="email" className="block mb-1">
+            Email:
+          </label>
           <input
             type="email"
             id="email"
@@ -76,10 +94,25 @@ const InfoForm = () => {
             className="w-full border rounded px-3 py-2"
           />
         </div>
-
-        {/* حقل رقم الهاتف */}
+  
         <div>
-          <label htmlFor="phone" className="block mb-1"> phone:</label>
+          <label htmlFor="password" className="block mb-1">
+            Password:
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full border rounded px-3 py-2"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="phone" className="block mb-1">
+            Phone:
+          </label>
           <input
             type="tel"
             id="phone"
@@ -90,9 +123,10 @@ const InfoForm = () => {
           />
         </div>
 
-        {/* حقل المدينة */}
         <div>
-          <label htmlFor="city" className="block mb-1">city</label>
+          <label htmlFor="city" className="block mb-1">
+            City:
+          </label>
           <select
             id="city"
             name="city"
@@ -103,22 +137,14 @@ const InfoForm = () => {
             <option>Amman</option>
             <option>Zarqa</option>
             <option>Irbid</option>
-            <option>Mafraq</option>
-            <option>Ajloun</option>
-            <option>Jerash</option>
-            <option>Madaba</option>
-            <option>Balqa</option>
-            <option>Karak</option>
-            <option>Tafileh</option>
-            <option>Ma'an </option>
-            <option>Aqaba</option>
-            {/* يمكنك إضافة المزيد من الخيارات هنا */}
+            {/* Add more options here */}
           </select>
         </div>
 
-        {/* حقل الدولة */}
         <div>
-          <label htmlFor="country" className="block mb-1">country:</label>
+          <label htmlFor="country" className="block mb-1">
+            Country:
+          </label>
           <input
             type="text"
             id="country"
@@ -129,9 +155,10 @@ const InfoForm = () => {
           />
         </div>
 
-        {/* حقل اسم الشارع */}
         <div>
-          <label htmlFor="street" className="block mb-1">street :</label>
+          <label htmlFor="StreetName" className="block mb-1">
+          StreetName
+          </label>
           <input
             type="text"
             id="street"
@@ -142,11 +169,12 @@ const InfoForm = () => {
           />
         </div>
 
-        <Link to="Login">
-          <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2">
-            Submit
-          </button>
-        </Link>
+        <div>
+
+            <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white rounded px-4 py-2">
+              Submit
+            </button>
+        </div>
       </form>
     </div>
   );

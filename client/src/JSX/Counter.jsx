@@ -31,14 +31,14 @@ export default class Counter extends React.Component {
           onClick={() => {
             this.onClick(true);
           }}>
-          +
+        +
         </Button>
         <div className="count text-2xl col-span-1 ">{this.state.count}</div>
         <Button  className="px-4 text-s"
           onClick={() => {
             this.onClick(false);
           }} >
-          -
+        -
         </Button>
       </div>
     </div>

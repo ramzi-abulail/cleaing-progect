@@ -2,22 +2,6 @@
   "offices": [
     {
       "id": 1,
-      "fullName": "John Doe",
-      "phone": "123-456-7890",
-      "businessName": "ABC Inc.",
-      "numEmployees": 50,
-      "squareFootage": 1000
-    },
-    {
-      "id": 2,
-      "fullName": "Jane Smith",
-      "phone": "987-654-3210",
-      "businessName": "XYZ Corporation",
-      "numEmployees": 25,
-      "squareFootage": 750
-    },
-    {
-      "id": 3,
       "fullName": "Ramzi abulail",
       "phone": "0777488060",
       "businessName": "fdsrxdtcfvgbj",
@@ -25,35 +9,45 @@
       "squareFootage": "1000-2000"
     },
     {
-      "id": 4,
-      "fullName": "gold",
-      "phone": "0777488060",
-      "businessName": "gold",
-      "numEmployees": "1-50",
-      "squareFootage": "1000-2000"
-    },
-    {
-      "id": 5,
       "fullName": "Ramzi abulail",
       "phone": "0777488060",
-      "businessName": "gold",
-      "numEmployees": "51-100",
-      "squareFootage": "1000-2000"
+      "businessName": "nice for all",
+      "numEmployees": "101-500",
+      "squareFootage": "5001-10000",
+      "id": 2
     },
     {
       "fullName": "yousef",
       "phone": "0777488060",
-      "businessName": "jsx",
-      "numEmployees": "51-100",
-      "squareFootage": "2001-5000",
-      "id": 6
+      "businessName": "fdsrxdtcfvgbj",
+      "numEmployees": "101-500",
+      "squareFootage": "1000-2000",
+      "price": 1600,
+      "id": 3
     }
   ],
   "users": [
     {
       "id": 1,
-      "email": "ramzi@gmail.com",
-      "password": "ramzi777"
+      "firstName": " ",
+      "lastName": "",
+      "email": "",
+      "phone": "",
+      "city": "",
+      "country": "",
+      "StreetName": "",
+      "password": ""
+    },
+    {
+      "firstName": "gold",
+      "lastName": "gold",
+      "email": "gold@gmail.com",
+      "phone": "0777488060",
+      "city": "Zarqa",
+      "country": "jordan",
+      "StreetName": "eeeeeeeee",
+      "password": "goldgold",
+      "id": 2
     }
   ],
   "profiles": [
@@ -75,36 +69,27 @@
       "country": "jordan",
       "id": 2
     }
-    
-  ],
-  "user": [
-    {
-      
-      "email": "ramzi@gmail.com",
-      "phone": "0777488060",
-      "city": "zarqa",
-      "country": "jordan",
-      "street": "rrrr",
-      "fullName": "ramzi abulail",
-      "id": 1
-    }
-  
   ],
   "card": [
     {
+      "name": "gold",
+      "subject": "happy",
+      "id": 1
+    },
+    {
       "name": "ramzi abulail",
-      "subject": "they cleaned my office and the cleaning was perfect",
-      "id": 16
+      "subject": "just be fair",
+      "id": 5
     },
     {
-      "name": "asdfghj",
-      "subject": "sdfghnm",
-      "id": 17
+      "name": "",
+      "subject": "",
+      "id": 6
     },
     {
-      "name": "dxxxx",
-      "subject": "dddddx",
-      "id": 18
+      "name": "",
+      "subject": "",
+      "id": 7
     }
   ],
   "company": [
@@ -133,47 +118,6 @@
       "schoolName": "",
       "city": "",
       "streetName": ""
-    },
-    {
-      "fullname": "ssss",
-      "number": "0777488060",
-      "schoolName": "ssssss",
-      "city": "Jerash",
-      "streetName": "gggg",
-      "id": "7WYMVfj"
-    },
-    {
-      "fullname": "ssss",
-      "number": "sssssssssssssss",
-      "schoolName": "ramzi",
-      "city": "Amman",
-      "streetName": "ggggs",
-      "id": "Sh2MbLj"
-    },
-    {
-      "fullname": "ramzi abulail",
-      "number": "000000",
-      "schoolName": "ssssss",
-      "city": "Irbid",
-      "streetName": "ggggs",
-      "id": "sf-D1Cg"
-    },
-    {
-      "fullname": "",
-      "number": "",
-      "companyName": "",
-      "city": "",
-      "streetName": "",
-      "id": "KrkxtGF"
-    },
-    {
-      "fullname": "ramzi abulail",
-      "number": "jjjjjj",
-      "companyName": "",
-      "city": "Irbid",
-      "streetName": "jjjjjjjjjjj",
-      "schoolName": "ssssssjjj",
-      "id": 2
     }
   ],
   "usertable": [
@@ -190,24 +134,42 @@
       "phone": "0777488060"
     },
     {
-      "id": 3,
-      "fullName": "fouad abulail",
-      "gmail": "fouad@gmail.com",
-      "phone": "0777488060"
+      "fullName": "Ramzi abulail",
+      "gmail": "ramzi@gmail.com",
+      "phone": "0777488060",
+      "id": 3
     },
     {
       "fullName": "Ramzi abulail",
       "gmail": "ramzi@gmail.com",
       "phone": "0777488060",
-      "id": 4
+      "id": 5
     }
   ],
   "AdmainUser": [
     {
-      "fullName": "Ramzi abulail",
-      "gmail": "ramziabulail84@gmail.com",
-      "phone": "0777488060",
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "city": "",
+      "country": "",
+      "profileImage": "",
+      "streetName": "",
+      "phone": "",
+      "password": "",
       "id": 1
+    },
+    {
+      "firstName": "ramzi",
+      "lastName": "gold",
+      "email": "ramziabulail84@gmail.com",
+      "city": "Tafileh",
+      "country": "jordan",
+      "profileImage": {},
+      "streetName": "tarq ben zead",
+      "phone": "0777488060",
+      "password": "ramzi777",
+      "id": 2
     }
   ],
   "ServicesTable": [
@@ -220,12 +182,109 @@
       "id": 2
     },
     {
-      "Services": "company cleaning ",
+      "Services": "cleaning school",
       "id": 3
     },
     {
-      "Services": "comany cleanming ",
+      "Services": "rrrr",
+      "id": 5
+    }
+  ],
+  "houseform": [
+    {
+      "id": 1,
+      "fullName": "",
+      "email": "",
+      "phoneNumber": "",
+      "streetName": "",
+      "apartmentNumber": "",
+      "selectedDate": "",
+      "selectedTime": "",
+      "bathrooms": "",
+      "Bedroom": "'",
+      "livingroom": "",
+      "extraRooms": "",
+      "cleaningFrequency": ""
+    },
+    {
+      "fullName": "dddd",
+      "email": "ddd@dddd",
+      "phoneNumber": "0777488060",
+      "streetName": "gggg",
+      "apartmentNumber": "70",
+      "selectedDate": "2023-11-29T08:14:03.146Z",
+      "selectedTime": "12:00",
+      "bathrooms": "2",
+      "Bedroom": "1",
+      "livingroom": "3",
+      "extraRooms": "1",
+      "cleaningFrequency": "daily",
+      "totalPrice": 117,
+      "id": 2
+    },
+    {
+      "fullName": "",
+      "email": "",
+      "phoneNumber": "",
+      "streetName": "",
+      "apartmentNumber": "",
+      "selectedDate": "2023-11-29T10:07:42.056Z",
+      "selectedTime": "12:00",
+      "bathrooms": "7",
+      "Bedroom": "6",
+      "livingroom": "3",
+      "extraRooms": "18",
+      "cleaningFrequency": "weekly",
+      "totalPrice": 482,
+      "id": 3
+    },
+    {
+      "fullName": "Ramzi abulail",
+      "email": "ramzi@gmail.com",
+      "phoneNumber": "0777488060",
+      "streetName": "gggg",
+      "apartmentNumber": "70",
+      "selectedDate": "2023-11-07T13:21:36.000Z",
+      "selectedTime": "02:02",
+      "bathrooms": "8",
+      "Bedroom": "5",
+      "livingroom": "3",
+      "extraRooms": "15",
+      "cleaningFrequency": "weekly",
+      "totalPrice": 433,
       "id": 4
+    },
+    {
+      "fullName": "Ramzi abulail",
+      "email": "ramzi@gmail.com",
+      "phoneNumber": "0777488060",
+      "streetName": "gggg",
+      "apartmentNumber": "70",
+      "selectedDate": "2023-12-13T10:53:57.000Z",
+      "selectedTime": "19:03",
+      "bathrooms": "5",
+      "Bedroom": "4",
+      "livingroom": "2",
+      "extraRooms": "12",
+      "cleaningFrequency": "yearly",
+      "totalPrice": 790,
+      "id": 5
+    }
+  ],
+  "payment": [
+    {
+      "name": "",
+      "cardNumber": "",
+      "expiry": "",
+      "cvv": "",
+      "id": 1
+    },
+    {
+      "name": "ramzi abulail",
+      "cardNumber": "1234-1234-1234-1234",
+      "expiry": "2023-05-01T11:06:10.000Z",
+      "cvv": "666",
+      "id": 2
     }
   ]
 }

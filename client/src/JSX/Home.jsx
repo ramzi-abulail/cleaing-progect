@@ -3,6 +3,7 @@ import HeroSlider from './HeroSlider'
 import AboutUsSection from './AboutUsSection'
 import OurServices from './OurServices'
 import Card from './Card'
+import RecentWork from './RecentWork '
 
 function Home() {
   return (
@@ -11,6 +12,7 @@ function Home() {
       <HeroSlider />
       <AboutUsSection />
       <OurServices />
+     <RecentWork/>
       <Card />
     </div>
   )

@@ -9,9 +9,9 @@ const Profile = () => {
 
   useEffect(() => {
     // Fetch user data from the JSON server using axios
-    axios.get(`http://localhost:3001/user`)
+    axios.get(`http://localhost:3001/AdmainUser`)
       .then((response) => {
-        setUserData(response.data[0]);
+        setUserData(response.data[1]);
       })
       .catch((error) => {
         console.error('Error fetching data:', error);
@@ -24,41 +24,53 @@ const Profile = () => {
   };
 
   return (
-    <div className="flex">
+    <div className="flex flex-raw">
+     {/* slidbar */}
       <div className="bg-gray-800 text-white w-64 h-screen flex flex-col">
         <div className="p-4">
           <h1 className="text-2xl font-bold">Sidebar</h1>
           <ul className="space-y-2 font-medium">
-      <li className="py-2 hover:bg-gray-700 cursor-pointer">
-        <Link to="/Profile">Profile</Link>
-      </li>
-      <li className="py-2 hover:bg-gray-700 cursor-pointer">
-        <Link to="/ProfileForm">Edit Profile</Link>
-      </li>
-      <li className="py-2 hover:bg-gray-700 cursor-pointer">
-        <Link to="/OurServices">Order</Link>
-      </li>
-      {/* Add more Link components for other routes */}
-    </ul>
+            <li className="py-2 hover:bg-gray-700 cursor-pointer">
+              <Link to="/Profile">Profile</Link>
+            </li>
+            <li className="py-2 hover:bg-gray-700 cursor-pointer">
+              <Link to="/ProfileForm">Edit Profile</Link>
+            </li>
+            <li className="py-2 hover:bg-gray-700 cursor-pointer">
+              <Link to="/OurServices">Order</Link>
+            </li>
+          </ul>
         </div>
       </div>
-      <main className="flex-1 bg-gray-200 p-8">
+      <main className=" flex flex-col p-8">
         {/* Display uploaded photo */}
-        {photo && (
-          <div className="mb-4">
-            <img
-              src={URL.createObjectURL(photo)}
-              alt="Uploaded"
-              className="md:w-60 md:h-60 object-cover rounded-full ml-10 mt-10"
+        <div className="md:w-80 md:h-80">
+          {photo && (
+            <div className=" mb-20">
+              <img
+                src={URL.createObjectURL(photo)}
+                alt="Uploaded"
+                className="md:w-60 md:h-60 object-cover rounded-xl ml-10 mt-10"
+              />
+            </div>
+          )}
+          {/* Photo upload section */}
+          {!photo && (
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handlePhotoChange}
+              className="mb-4 ml-6"
             />
-          </div>
-        )}
-      {/* User details */}
-      <div className="ml-6">
-          <div>
+          )}
+        </div>
+        {/* User details */}
+        <div className=" ml-6">
+     
             {userData && (
-              <div>
-                <p>Full Name: {userData.fullName}</p>
+              <div className='text-black font-bold '>
+                <p>firstName: {userData.firstName}</p>
+                <p>lastName: {userData.lastName}</p>
                 <p>Email: {userData.email}</p>
                 {/* Additional Information Section */}
                 <section>
@@ -66,26 +78,20 @@ const Profile = () => {
                   <p>Phone: {userData.phone}</p>
                   <p>City: {userData.city}</p>
                   <p>Country: {userData.country}</p>
-                  <p>Street Name: {userData.street}</p>
+                  <p>streetName: {userData.streetName}</p>
                 </section>
               </div>
             )}
-          </div>
+    
         </div>
-    
-
-        {/* Photo upload section */}
-        {!photo && (
-          <input
-            type="file"
-            accept="image/*"
-            onChange={handlePhotoChange}
-            className="mb-4 ml-6"
-          />
-        )}
+        
       </main>
-    
+
+
+
     </div>
+
+
   );
 };
 

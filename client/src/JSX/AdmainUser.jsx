@@ -5,7 +5,8 @@ const AdmainUser = () => {
     const [userData, setUserData] = useState([]);
     const [editableRow, setEditableRow] = useState(null);
     const [newUser, setNewUser] = useState({
-        fullName: '',
+        firstName: '',
+        lastName: '',
         gmail: '',
         phone: '',
     });
@@ -30,7 +31,8 @@ const AdmainUser = () => {
             .then((response) => {
                 setUserData([...userData, response.data]);
                 setNewUser({
-                    fullName: '',
+                    firstName: '',
+                    lastName: '',
                     gmail: '',
                     phone: '',
                 });

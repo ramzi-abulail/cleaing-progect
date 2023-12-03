@@ -1,176 +1,136 @@
-// import useSWR, { SWRConfig } from "swr";
-// import { createContext, useContext, useMemo } from "react";
-// import type { ReactNode } from "react";
-// import { loadStripe } from "@stripe/stripe-js";
+import React, { useState } from 'react';
+import axios from 'axios';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
-// const StripeContext = createContext(null);
+function Payment2() {
+  const [formData, setFormData] = useState({
+    name: '',
+    cardNumber: '',
+    expiry: new Date(), 
+    cvv: '',
+  });
 
-// export const SubscriptionProvider = ({
-//   children,
-//   endpoint,
-//   stripePublishableKey,
-// }: {
-//   stripePublishableKey: string;
-//   children: ReactNode;
-//   endpoint?: string;
-// }) => {
-//   const stripeClient = useMemo(() => loadStripe(stripePublishableKey), [
-//     stripePublishableKey,
-//     loadStripe,
-//   ]);
-//   endpoint = endpoint || "/api/subscription";
-//   return (
-//     <StripeContext.Provider
-//       value={{ clientPromise: stripeClient, endpoint: endpoint }}
-//     >
-//       <SWRConfig
-//         value={{
-//           fetcher: async (args) => {
-//             const data = await fetch(args);
-//             return await data.json();
-//           },
-//         }}
-//       >
-//         {children}
-//       </SWRConfig>
-//     </StripeContext.Provider>
-//   );
-// };
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-// export interface redirectToCheckoutArgs {
-//   price: string;
-//   successUrl?: string;
-//   cancelUrl?: string;
-// }
+  const handleDateChange = (date) => {
+    setFormData({
+      ...formData,
+      expiry: date,
+    });
+  };
 
-// export interface redirectToCustomerPortalArgs {
-//   returnUrl?: string;
-// }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+  
+    if (!/^\d{3}$/.test(formData.cvv)) {
+      alert('CVV must be a 3-digit number');
+      return;
+    }
+  
+    if (!/^\d{4}-\d{4}-\d{4}-\d{4}$/.test(formData.cardNumber)) {
+      alert('Expiry Date should be in the format xxxx-xxxx-xxxx-xxxx');
+      return;
+    }
+  
+    try {
+      const response = await axios.post('http://localhost:3001/payment', formData);
+      console.log('Payment data saved:', response.data);
+      alert('Payment successfully submitted!');
+  
+      // Clear form data after successful submission
+      setFormData({
+        name: '',
+        cardNumber: '',
+        expiry: new Date(),
+        cvv: '',
+      });
+    } catch (error) {
+      console.error('Error saving payment:', error);
+      alert('There was an error while processing your payment. Please try again.');
+    }
+  };
+  
+  return (
+    <div className="flex justify-center items-center h-screen">
+    <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/3" onSubmit={handleSubmit}>
+      <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+          Name on Card
+        </label>
+        <input
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="name"
+          type="text"
+          name="name"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="write your card name"
+        />
+      </div>
 
-// export function useSubscription() {
-//   const { clientPromise, endpoint } = useContext(StripeContext);
-//   const { data, error } = useSWR(`${endpoint}?action=useSubscription`);
+      <div className="mb-4">
+        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="cardNumber">
+          Card Number
+        </label>
+        <input
+          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+          id="cardNumber"
+          type="text"
+          name="cardNumber"
+          value={formData.cardNumber}
+          onChange={handleChange}
+          placeholder="write your card number"
+        />
+      </div>
 
-//   // Also wait for customer to load
-//   if (!data) {
-//     return {
-//       isLoaded: false,
-//     } as {
-//       isLoaded: false;
-//       subscription: undefined;
-//       products: undefined;
-//       redirectToCheckout: undefined;
-//       redirectToCustomerPortal: undefined;
-//     };
-//   }
+      <div className="mb-4 flex">
+          <div className="w-1/2 mr-2">
+            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="expiry">
+              Expiry Date
+            </label>
+            <DatePicker
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              id="expiry"
+              selected={formData.expiry}
+              onChange={handleDateChange}
+              showMonthYearPicker
+              dateFormat="MM/yyyy"
+            />
+          </div>
+        <div className="w-1/2 ml-2">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="cvv">
+            CVV
+          </label>
+          <input
+            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="cvv"
+            type="text"
+            name="cvv"
+            value={formData.cvv}
+            onChange={handleChange}
+            maxLength={3} 
+            placeholder="CVV"
+          />
+        </div>
+      </div>
 
-//   const { products, subscription } = data;
+      <div className="flex items-center justify-between">
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+          type="submit"
+        >
+          Submit Payment
+        </button>
+      </div>
+    </form>
+  </div>
+);
+}
 
-//   const redirectToCheckout = async (args: redirectToCheckoutArgs) => {
-//     if (!args.successUrl) {
-//       args.successUrl = window.location.href;
-//     }
-//     if (!args.cancelUrl) {
-//       args.cancelUrl = window.location.href;
-//     }
-//     const sessionResponse = await fetch(
-//       `${endpoint}?action=redirectToCheckout`,
-//       {
-//         method: "post",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(args),
-//       }
-//     );
-//     const session = await sessionResponse.json();
-//     window.location.href = session.url;
-//   };
-
-//   const redirectToCustomerPortal = async (
-//     args: redirectToCustomerPortalArgs
-//   ) => {
-//     args = args || {};
-//     if (!args.returnUrl) {
-//       args.returnUrl = window.location.href;
-//     }
-//     const sessionResponse = await fetch(
-//       `${endpoint}?action=redirectToCustomerPortal`,
-//       {
-//         method: "post",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(args),
-//       }
-//     );
-//     const session = await sessionResponse.json();
-//     window.location.href = session.url;
-//   };
-
-//   return {
-//     isLoaded: true,
-//     products,
-//     subscription,
-//     redirectToCheckout,
-//     redirectToCustomerPortal,
-//   };
-// }
-
-// interface GateProps {
-//   product?: any;
-//   unsubscribed?: boolean;
-//   feature?: string;
-//   negate?: boolean;
-//   children?: ReactNode;
-// }
-// export const Gate = ({
-//   product,
-//   negate,
-//   feature,
-//   unsubscribed,
-//   children,
-// }: GateProps) => {
-//   const { isLoaded, products, subscription } = useSubscription();
-
-//   if ([!!unsubscribed, !!product, !!feature].filter((x) => x).length !== 1) {
-//     throw new Error(
-//       `Please pass exactly one of unsubscribed, product, or feature to Gate`
-//     );
-//   }
-
-//   if (!isLoaded) {
-//     return null;
-//   }
-
-//   let condition;
-//   if (unsubscribed) {
-//     condition = subscription === null;
-//   }
-
-//   if (product || feature) {
-//     if (subscription === null) {
-//       return null;
-//     }
-//     condition = false;
-//     for (let item of subscription.items.data) {
-//       if (product && item.price.product === product.id) {
-//         condition = true;
-//       } else if (feature) {
-//         const productFeatures =
-//           products
-//             .find((x) => x.product.id === item.price.product)
-//             .product.metadata.features?.split(",") || [];
-//         for (let productFeature of productFeatures) {
-//           if (productFeature === feature) {
-//             condition = true;
-//           }
-//         }
-//       }
-//     }
-//   }
-
-//   return (!negate && condition) || (negate && !condition) ? (
-//     <>{children}</>
-//   ) : null;
-// };
+export default Payment2;
