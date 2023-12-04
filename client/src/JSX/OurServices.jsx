@@ -5,7 +5,12 @@ import img11 from '../img/img11.jpg';
 import img12 from '../img/img12.jpg';
 import { Link } from 'react-router-dom';
 
+
+
 function OurServices() {
+  const role = localStorage.getItem('role');
+
+
   return (
     <div>
       <section className='bg-white md:h-88 p-6'>
@@ -61,7 +66,7 @@ function OurServices() {
           </div>
 
           {/* 4th card */}
-          <div className='mb-4 border shadow-2xl md:w-80'>
+{   (role==2 ) &&      <div className='mb-4 border shadow-2xl md:w-80'>
             <img className="rounded-t-lg md:h-60 p-2" src={img12} alt="" />
             <div className="p-5">
               <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">School Cleaning</h5>
@@ -72,7 +77,7 @@ function OurServices() {
                 </svg>
               </Link>
             </div>
-          </div>
+          </div>}
 
         </div>
 

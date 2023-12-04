@@ -30,6 +30,8 @@ import InfoForm from './JSX/SignUp';
 import ThankYou from './JSX/ThankYou';
 import Payment2 from '../src/JSX/Payment2';
 import React, { useEffect, useState } from 'react';
+import ServicesCard from './JSX/ServicesCard';
+import ServiceDetails from './JSX/ServiceDetails';
 
 
 
@@ -51,7 +53,7 @@ function App() {
   return (
     <div>
 
-      {role !== 1  &&
+      {role !== 1 && role !==2 &&
 
         <BrowserRouter>
           <NavBar />
@@ -60,8 +62,13 @@ function App() {
             <Route path='/Login' element={<Login />} />
             <Route path='/Signup' element={<Signup />} />
             <Route path='/LoginAdmin' element={<LoginAdmin />} />
+            <Route path="/ServicesCard" element={<ServicesCard/>} />
+            <Route path="/details/:id" component={<ServiceDetails/>} />
+
+
           </Routes>
           <Footer />
+
         </BrowserRouter>
       }
 
@@ -81,7 +88,8 @@ function App() {
 
       {role === 2 &&
         <BrowserRouter>
-          <NavBar />
+                  <NavBar />
+
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/OurServices' element={<OurServices />} />
@@ -101,6 +109,8 @@ function App() {
             <Route path='/ProfileForm' element={<ProfileForm />} />
             <Route path='/LoginAdmin' element={<LoginAdmin />} />
             <Route path='/InfoForm' element={<InfoForm />} />
+            <Route path='/Profile' element={<Profile />} />
+            <Route path='/Payment2' element={<Payment2 />} />
             <Route path='/ThankYou' element={<ThankYou />} />
           </Routes>
           <Footer />

@@ -2,9 +2,16 @@ import React from 'react';
 import logo from '../img/logo.png';
 
 function Footer() {
+  const userRole = localStorage.getItem('role');
+  const isAdmin = userRole === '1';
+  const isUser = userRole === '2';
+  const isGuest = !isAdmin && !isUser;
+
+  const isHomePage =
+    window.location.pathname === "/UserTable" || window.location.pathname === "/AdmainUser"  || window.location.pathname === "/ServicesTable"  
   return (
     <div>
-      <footer className="bg-blue-500 dark:bg-gray-900">
+      <footer className={`bg-blue-500  dark:bg-gray-900  ${(isHomePage)? "hidden" : ""}`}>
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div className="md:flex md:justify-between items-center">
             <div className="mb-6 md:mb-0">

@@ -31,7 +31,7 @@ function LoginAdmin() {
         
 
         localStorage.setItem('role' , 1)
-        navigate('/');
+        navigate('/Dashboard');
      
       } else {
         console.error('Invalid credentials!');
