@@ -1,31 +1,4 @@
 {
-  "offices": [
-    {
-      "id": 1,
-      "fullName": "Ramzi abulail",
-      "phone": "0777488060",
-      "businessName": "fdsrxdtcfvgbj",
-      "numEmployees": "51-100",
-      "squareFootage": "1000-2000"
-    },
-    {
-      "fullName": "Ramzi abulail",
-      "phone": "0777488060",
-      "businessName": "nice for all",
-      "numEmployees": "101-500",
-      "squareFootage": "5001-10000",
-      "id": 2
-    },
-    {
-      "fullName": "yousef",
-      "phone": "0777488060",
-      "businessName": "fdsrxdtcfvgbj",
-      "numEmployees": "101-500",
-      "squareFootage": "1000-2000",
-      "price": 1600,
-      "id": 3
-    }
-  ],
   "users": [
     {
       "firstName": "gold",
@@ -92,34 +65,6 @@
       "id": 7
     }
   ],
-  "company": [
-    {
-      "id": 1,
-      "fullname": "",
-      "number": "",
-      "companyName": "",
-      "city": "",
-      "streetName": ""
-    },
-    {
-      "fullname": "ramzi abulail",
-      "number": "000000",
-      "companyName": "cleanex",
-      "city": "Amman",
-      "streetName": "gggg",
-      "id": "W6ecKPL"
-    }
-  ],
-  "schools": [
-    {
-      "id": 1,
-      "fullname": "",
-      "number": "",
-      "schoolName": "",
-      "city": "",
-      "streetName": ""
-    }
-  ],
   "AdmainUser": [
     {
       "firstName": "ramzi",
@@ -146,87 +91,6 @@
     {
       "Services": "clean car",
       "id": 6
-    }
-  ],
-  "houseform": [
-    {
-      "id": 1,
-      "fullName": "",
-      "email": "",
-      "phoneNumber": "",
-      "streetName": "",
-      "apartmentNumber": "",
-      "selectedDate": "",
-      "selectedTime": "",
-      "bathrooms": "",
-      "Bedroom": "'",
-      "livingroom": "",
-      "extraRooms": "",
-      "cleaningFrequency": ""
-    },
-    {
-      "fullName": "dddd",
-      "email": "ddd@dddd",
-      "phoneNumber": "0777488060",
-      "streetName": "gggg",
-      "apartmentNumber": "70",
-      "selectedDate": "2023-11-29T08:14:03.146Z",
-      "selectedTime": "12:00",
-      "bathrooms": "2",
-      "Bedroom": "1",
-      "livingroom": "3",
-      "extraRooms": "1",
-      "cleaningFrequency": "daily",
-      "totalPrice": 117,
-      "id": 2
-    },
-    {
-      "fullName": "",
-      "email": "",
-      "phoneNumber": "",
-      "streetName": "",
-      "apartmentNumber": "",
-      "selectedDate": "2023-11-29T10:07:42.056Z",
-      "selectedTime": "12:00",
-      "bathrooms": "7",
-      "Bedroom": "6",
-      "livingroom": "3",
-      "extraRooms": "18",
-      "cleaningFrequency": "weekly",
-      "totalPrice": 482,
-      "id": 3
-    },
-    {
-      "fullName": "Ramzi abulail",
-      "email": "ramzi@gmail.com",
-      "phoneNumber": "0777488060",
-      "streetName": "gggg",
-      "apartmentNumber": "70",
-      "selectedDate": "2023-11-07T13:21:36.000Z",
-      "selectedTime": "02:02",
-      "bathrooms": "8",
-      "Bedroom": "5",
-      "livingroom": "3",
-      "extraRooms": "15",
-      "cleaningFrequency": "weekly",
-      "totalPrice": 433,
-      "id": 4
-    },
-    {
-      "fullName": "Ramzi abulail",
-      "email": "ramzi@gmail.com",
-      "phoneNumber": "0777488060",
-      "streetName": "gggg",
-      "apartmentNumber": "70",
-      "selectedDate": "2023-12-13T10:53:57.000Z",
-      "selectedTime": "19:03",
-      "bathrooms": "5",
-      "Bedroom": "4",
-      "livingroom": "2",
-      "extraRooms": "12",
-      "cleaningFrequency": "yearly",
-      "totalPrice": 790,
-      "id": 5
     }
   ],
   "payment": [
@@ -261,7 +125,7 @@
     },
     {
       "photo": "data:image/jpeg;base64,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",
-      "serviceName": "office cleaning ",
+      "serviceName": "office cleaning",
       "cardName": "office ",
       "details": "Our office cleaning services encompass a range of tasks designed to maintain a clean, hygienic, and organized workplace.",
       "cleaningTypes": [
@@ -291,7 +155,7 @@
     },
     {
       "photo": "https://t3.ftcdn.net/jpg/04/72/48/70/360_F_472487007_AmUwPGNEEdqxCGMMnrXRAAVOzhuKbz63.jpg",
-      "serviceName": "school cleaning ",
+      "serviceName": "school cleaning",
       "cardName": "school cleaning ",
       "details": "School cleaning services are essential for maintaining a safe, hygienic, and conducive learning environment for students and staff.",
       "cleaningTypes": [
@@ -306,6 +170,57 @@
         "Playground Area Cleaning:   Cleaning and sanitizing outdoor play equipment and areas to ensure a safe and hygienic environment for children"
       ],
       "id": 6
+    }
+  ],
+  "order": [
+    {
+      "fullName": "Ramzi abulail",
+      "email": "ramziabulail84@gmail.com",
+      "phoneNumber": "0777488060",
+      "streetName": "gggg",
+      "apartmentNumber": "70",
+      "selectedDate": "2023-12-27T12:50:22.000Z",
+      "selectedTime": "12:00",
+      "bathrooms": "5",
+      "Bedroom": "9",
+      "livingroom": "2",
+      "extraRooms": "17",
+      "cleaningFrequency": "weekly",
+      "totalPrice": 465,
+      "id": 1
+    },
+    {
+      "fullName": "Ramzi abulail",
+      "phone": "0777488060",
+      "businessName": "gold",
+      "numEmployees": "51-100",
+      "squareFootage": "2001-5000",
+      "price": 1400,
+      "id": 2
+    },
+    {
+      "fullname": "ramzi abulail",
+      "number": "0777488060",
+      "companyName": "cleanex",
+      "city": "Amman",
+      "streetName": "gggg",
+      "id": 3
+    },
+    {
+      "firstName": "ramzi",
+      "lastName": "abulail",
+      "number": "0777488060",
+      "schoolName": "ssssss",
+      "city": "Zarqa",
+      "streetName": "ggggs",
+      "numOfClassrooms": "3",
+      "numOfFloors": "2",
+      "numOfSchoolYards": "2",
+      "numOfRoomsForTeachers": "3",
+      "numOfGyms": "3",
+      "numOfSwimmingPools": "2",
+      "totalPrice": 685,
+      "id": 8
     }
   ]
 }

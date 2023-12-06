@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
 const citiesInJordan = [
   'Amman',
@@ -11,6 +12,12 @@ const citiesInJordan = [
 ];
 
 function CompanyForm() {
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+}, []);
+const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     fullname: '',
     number: '',
@@ -30,7 +37,7 @@ function CompanyForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/company', formData);
+      await axios.post('http://localhost:3001/order', formData);
       setFormData({
         fullname: '',
         number: '',
@@ -38,7 +45,10 @@ function CompanyForm() {
         city: '',
         streetName: '',
       });
+      
       alert('Company information submitted successfully!');
+   
+      navigate('/Payment2');
     } catch (error) {
       console.error('Error creating company:', error);
     }

@@ -5,6 +5,7 @@ import img9 from '../img/img9.png';
 
 
 function AboutUs() {
+    
     return (
         <div className='bg-white'>
             <section className="flex items-center bg-whitelg:h-screen font-poppins dark:bg-gray-800 mt-5">

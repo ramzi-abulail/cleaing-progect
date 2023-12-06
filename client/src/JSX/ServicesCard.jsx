@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 const ServicesCard = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     const [services, setServices] = useState([]);
     const [photo, setPhoto] = useState('');
     const [serviceName, setServiceName] = useState('');
@@ -12,7 +16,7 @@ const ServicesCard = () => {
     const [details, setdetails] = useState('');
     const { id } = useParams();
     const [cleaningTypes, setCleaningTypes] = useState(['', '', '', '' ,'','', '' , '' ,'']);
-    const [currentPage, setCurrentPage] = useState();
+    const [currentPage, setCurrentPage] = useState(0);
 
 
 

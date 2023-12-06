@@ -4,7 +4,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import logo from '../img/logo.png';
 
 function LoginAdmin() {
-  const navigate = useNavigate();
+  const navigate = useNavigate([]);
   const [formData, setFormData] = useState({
     email: '',
     password: '',

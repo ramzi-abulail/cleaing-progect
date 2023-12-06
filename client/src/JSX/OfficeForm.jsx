@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+function OfficeForm() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-function MyForm() {
   const [formData, setFormData] = useState({
     fullName: '',
     phone: '',
@@ -11,7 +15,7 @@ function MyForm() {
   });
 
   const [price, setPrice] = useState(0);
-
+  const navigate = useNavigate();
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
@@ -20,10 +24,10 @@ function MyForm() {
         ...formData,
         price: price, // Add the price to the form data
       };
-  
-      const response = await axios.post('http://localhost:3001/offices', dataToSend);
+
+      const response = await axios.post('http://localhost:3001/order', dataToSend);
       console.log('Data sent:', response.data);
-  
+
       // Reset form fields after successful submission
       setFormData({
         fullName: '',
@@ -33,6 +37,7 @@ function MyForm() {
         squareFootage: '',
       });
       setPrice(0); // Reset price
+      navigate('/Payment2');
     } catch (error) {
       console.error('Error creating office:', error);
     }
@@ -162,8 +167,8 @@ function MyForm() {
           </div>
 
           <div className="mb-4 text-center font-semibold">
-          Price: ${price}
-        </div>
+            Price: ${price}
+          </div>
 
           {/* Submit button */}
           <button
@@ -180,4 +185,4 @@ function MyForm() {
   );
 }
 
-export default MyForm;
+export default OfficeForm;

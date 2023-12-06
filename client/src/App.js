@@ -8,8 +8,7 @@ import AboutUs from './JSX/AboutUs';
 import ContactUs from './JSX/ContactUs';
 import OurServices from './JSX/OurServices';
 import SchoolForm from './JSX/SchoolForm';
-import MyForm from './JSX/OfficeForm';
-import HouseForm from './JSX/HouseForn';
+import HouseForm from './JSX/HouseForm';
 import CompanyForm from './JSX/CompanyForm';
 import Home from './JSX/Home';
 import Signup from './JSX/SignUp'
@@ -19,11 +18,6 @@ import UserTable from './JSX/UserTable';
 import AdmainUser from './JSX/AdmainUser';
 import ServicesTable from './JSX/ServicesTable';
 import Profile from './JSX/Profile';
-import OurServices1 from './JSX/OurServicesMainPage';
-import HouseCleaningDetails from './JSX/HouseCleaningDetails';
-import OfficeCleaningDetails from './JSX/OfficeCleaningDetails';
-import CompanyCleaningDetails from './JSX/CompanyCleaningDetails';
-import SchoolCleaningDetails from './JSX/SchoolCleaningDetails';
 import ProfileForm from './JSX/ProfileForm';
 import LoginAdmin from './JSX/LoginAdmin';
 import InfoForm from './JSX/SignUp';
@@ -34,6 +28,8 @@ import ServicesCard from './JSX/ServicesCard';
 import ServiceDetails from './JSX/ServiceDetails';
 import ServicesCardHome from './JSX/ServicesCardHome';
 import ServiceDetailsHome from './JSX/ServiceDetailsHome';
+import OfficeForm from './JSX/OfficeForm';
+import SchoolForm1 from './JSX/SchoolForm';
 
 
 
@@ -50,7 +46,9 @@ function App() {
     }
   }, []);
 
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   console.log(role);
   return (
     <div>
@@ -66,7 +64,14 @@ function App() {
             <Route path='/LoginAdmin' element={<LoginAdmin />} />
             <Route path="/ServicesCardHome" element={<ServicesCardHome/>} />
             <Route path="/details/:id" element={<ServiceDetailsHome/>} />
-       
+            <Route path='/AboutUs' element={<AboutUs />} />
+            <Route path="/services/:id" element ={<ServiceDetailsHome/>} />
+            <Route path='/OfficeForm' element={<OfficeForm />} />
+            <Route path='/CompanyForm' element={<CompanyForm />} />
+            <Route path='/SchoolForm1' element={<SchoolForm1 />} />
+            <Route path='/HouseForm' element={<HouseForm />} />
+            <Route path='/Payment2' element={<Payment2 />} />
+           
           </Routes>
           <Footer />
 
@@ -82,6 +87,10 @@ function App() {
             <Route path='/AdmainUser' element={<AdmainUser />} />
             <Route path='/ServicesCard' element={<ServicesCard />} />
             <Route path="/details/:id" element={<ServiceDetails/>} />
+            <Route path='/OfficeForm' element={<OfficeForm />} />
+            <Route path='/CompanyForm' element={<CompanyForm />} />
+            <Route path='/SchoolForm' element={<SchoolForm />} />
+            <Route path='/HouseForm' element={<HouseForm />} />
           </Routes>
           <Dashboard />
         </BrowserRouter>
@@ -94,27 +103,15 @@ function App() {
 
           <Routes>
             <Route path='/' element={<Home />} />
-            <Route path='/OurServices' element={<OurServices />} />
+       
             <Route path='/ContactUs' element={<ContactUs />} />
             <Route path='/AboutUs' element={<AboutUs />} />
-            <Route path='/HouseForm' element={<HouseForm />} />
-            <Route path='/MyForm' element={<MyForm />} />
-            <Route path='/CompanyForm' element={<CompanyForm />} />
-            <Route path='/SchoolForm' element={<SchoolForm />} />
-            <Route path='/Login' element={<Login />} />
-            <Route path='/Signup' element={<Signup />} />
-            <Route path='/OurServices' element={<OurServices />} />
-            <Route path='/HouseCleaningDetails' element={<HouseCleaningDetails />} />
-            <Route path='/OfficeCleaningDetails' element={<OfficeCleaningDetails />} />
-            <Route path='/CompanyCleaningDetails' element={<CompanyCleaningDetails />} />
-            <Route path='/SchoolCleaningDetails' element={<SchoolCleaningDetails />} />
             <Route path='/ProfileForm' element={<ProfileForm />} />
-            <Route path='/LoginAdmin' element={<LoginAdmin />} />
-            <Route path='/InfoForm' element={<InfoForm />} />
             <Route path='/Profile' element={<Profile />} />
             <Route path='/Payment2' element={<Payment2 />} />
             <Route path='/ThankYou' element={<ThankYou />} />
             <Route path="/details/:id" element={<ServiceDetails/>} />
+            
           </Routes>
           <Footer />
         </BrowserRouter>

@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 const ServiceDetails = (props) => {
-  const [service, setService] = useState({});
+  const [service, setService] = useState([]);
   const { id } = useParams(); // Get ID from props
+  const navigate = useNavigate();
+
   console.log("id", id)
 
   useEffect(() => {
@@ -22,6 +24,27 @@ const ServiceDetails = (props) => {
 
     fetchServiceDetails();
   }, [id]);
+  const handleClick = () => {
+    // Check different service names to navigate accordingly
+    switch (service.serviceName) {
+        case 'house cleaning':
+            navigate('/HouseForm'); // Replace with the actual path of HouseCleaningComponent
+            break;
+        case 'office cleaning':
+            navigate('/OfficeForm'); // Replace with the actual path of OfficeCleaningComponent
+            break;
+        case 'company cleaning':
+            navigate('/CompanyForm'); // Replace with the actual path of CompanyCleaningComponent
+            break;
+        case 'school cleaning':
+            navigate('/SchoolForm'); // Replace with the actual path of CompanyCleaningComponent
+            break;
+        default:
+            console.error('Service does not match');
+            break;
+    }
+};
+
 
   return (
     <div className="container mx-auto mt-8">
@@ -61,6 +84,13 @@ const ServiceDetails = (props) => {
              
           </div>
         )}
+           <div className="ml-[1100px] my-4">
+                        <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-60 h-12">
+
+                            book with us now
+                        </button>
+
+                    </div>
       </div>
     )}
       

@@ -1,10 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState ,useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
 
+function SchoolForm() {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
 
-function App() {
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         fullName: '',
         email: '',
@@ -75,7 +81,7 @@ function App() {
             const totalPrice = calculateTotalPrice(); // Calculate total price
             const dataWithTotalPrice = { ...formData, totalPrice }; // Include totalPrice in the form data
     
-            const response = await axios.post('http://localhost:3001/houseform', dataWithTotalPrice);
+            const response = await axios.post('http://localhost:3001/order', dataWithTotalPrice);
             console.log('Data sent to server:', response.data);
     
             setFormData({
@@ -92,6 +98,8 @@ function App() {
                 extraRooms: '',
                 cleaningFrequency: '--',
             });
+            
+            navigate('/Payment2');
         } catch (error) {
             console.error('Error sending data:', error);
         }
@@ -317,4 +325,4 @@ function App() {
     );
 }
 
-export default App;
+export default SchoolForm;
