@@ -1,130 +1,205 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
-const ServicesTable = () => {
-  const [userData, setUserData] = useState([]);
-  const [editableRow, setEditableRow] = useState(null);
-  const [newService, setNewService] = useState('');
+const ServicesCard = () => {
+  const [services, setServices] = useState([]);
+  const [photo, setPhoto] = useState('');
+  const [serviceName, setServiceName] = useState('');
+  const [cardName, setCardName] = useState('');
+  const [editingId, setEditingId] = useState(null);
+  const [details, setdetails] = useState('');
+  const { id } = useParams();
+  const [cleaningTypes, setCleaningTypes] = useState(['', '', '', '', '', '', '', '', '']);
+  const [currentPage, setCurrentPage] = useState();
+
+
 
   useEffect(() => {
-    axios.get('http://localhost:3001/ServicesTable')
-      .then((response) => {
-        setUserData(response.data);
+    axios.get('http://localhost:3001/services')
+      .then(response => {
+        setServices(response.data);
       })
-      .catch((error) => {
-        console.error('Error fetching data:', error);
+      .catch(error => {
+        console.error('Error fetching services:', error);
       });
   }, []);
 
-  const handleChange = (e) => {
-    setNewService(e.target.value);
-  };
 
-  const handleAddService = () => {
-    if (newService.trim() !== '') {
-      const newUserData = [...userData, { Services: newService }];
-      setUserData(newUserData);
-      setNewService('');
-      
-      axios.post('http://localhost:3001/ServicesTable', { Services: newService })
-        .then((response) => {
-          // handle success if needed
+
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
+  const pageSize = 3;
+  const offset = currentPage * pageSize;
+  const paginatedServices = services.slice(offset, offset + pageSize);
+  const totalPages = Math.ceil(services.length / pageSize);
+  const pageNumbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+
+  const handleSubmit = (e, id) => {
+    e.preventDefault();
+    const serviceData = { photo, serviceName, cardName, details, cleaningTypes };
+
+    if (id) {
+      // Update existing service
+      axios.put(`http://localhost:3001/services/${id}`, serviceData)
+        .then(response => {
+          setServices(services.map(service => (service.id === id ? response.data : service)));
+          setPhoto('');
+          setServiceName('');
+          setCardName('');
+          setEditingId(null);
+          setdetails('');
+          setCleaningTypes(['', '', '', '', '', '', '', '', '']);
+
         })
-        .catch((error) => {
-          console.error('Error adding service:', error);
+        .catch(error => {
+          console.error('Error updating service:', error);
+        });
+    } else {
+      // Create new service
+      axios.post('http://localhost:3001/services', serviceData)
+        .then(response => {
+          setServices([...services, response.data]);
+          setPhoto('');
+          setServiceName('');
+          setCardName('');
+          setdetails('');
+          setCleaningTypes(['', '', '', '', '', '', '', '', '']);
+
+        })
+        .catch(error => {
+          console.error('Error creating service:', error);
         });
     }
   };
 
-  const handleEdit = (rowIndex) => {
-    setEditableRow(rowIndex);
+  const handleEdit = (id, name, cardName, photo, details, cleaningTypes,) => {
+    setEditingId(id);
+    setServiceName(name);
+    setCardName(cardName);
+    setPhoto(photo);
+    setdetails(details);
+    setCleaningTypes(cleaningTypes || ['', '', '', '', '', '', '', '', '']);
+
+
   };
-
-  const handleSave = (rowIndex) => {
-    setEditableRow(null);
-    const updatedUserData = [...userData];
-
-    axios.put(`http://localhost:3001/ServicesTable/${rowIndex}`, updatedUserData[rowIndex])
+  const handleDelete = (id) => {
+    axios.delete(`http://localhost:3001/services/${id}`)
       .then(() => {
-        setUserData(updatedUserData);
+        setServices(services.filter(service => service.id !== id));
       })
-      .catch((error) => {
-        console.error('Error updating service:', error);
-      });
-  };
-
-  const handleDelete = (rowIndex) => {
-    const updatedUserData = userData.filter((row, index) => index !== rowIndex);
-    setUserData(updatedUserData);
-
-    axios.delete(`http://localhost:3001/ServicesTable/${rowIndex}`)
-      .catch((error) => {
+      .catch(error => {
         console.error('Error deleting service:', error);
       });
   };
+  const handleClick = () => {
 
-  const generateRows = () => {
-    return userData.map((row, rowIndex) => (
-      <tr key={rowIndex}>
-        <td className="border px-4 py-2">
-          {editableRow === rowIndex ? (
-            <input
-              type="text"
-              value={row.Services}
-              onChange={(e) => {
-                const updatedUserData = [...userData];
-                updatedUserData[rowIndex].Services = e.target.value;
-                setUserData(updatedUserData);
-              }}
-            />
-          ) : (
-            row.Services
-          )}
-        </td>
-        <td className="border px-4 py-4 ">
-          {editableRow === rowIndex ? (
-            <button onClick={() => handleSave(rowIndex)} className='bg-blue-500 mr-4 rounded p-2'>Save</button>
-          ) : (
-            <>
-              <button onClick={() => handleEdit(rowIndex)} className='bg-green-500 mr-4 rounded p-2'>Edit</button>
-              <button onClick={() => handleDelete(rowIndex)} className='bg-red-500 rounded p-2'>Delete</button>
-            </>
-          )}
-        </td>
-      </tr>
-    ));
+    console.log('Button clicked!');
   };
 
   return (
-    <div>
-      <div className="flex justify-center items-center mb-4 mt-10 border">
-        <h2 className="text-xl font-semibold mr-4 mb-4">Services Table</h2>
-        <div className="flex items-center">
+    <div className="container mx-auto mt-8">
+      <form onSubmit={handleSubmit} className="flex items-center justify-center flex-wrap gap-4 ml-60">
+        <input
+          type="text"
+          placeholder="Service Name"
+          value={serviceName}
+          onChange={(e) => setServiceName(e.target.value)}
+          className="border rounded px-4 py-2 mr-2"
+        />
+        <input
+          type="text"
+          placeholder="Photo URL"
+          value={photo}
+          onChange={(e) => setPhoto(e.target.value)}
+          className="border rounded px-4 py-2 mr-2"
+        />
+        <input
+          type="text"
+          placeholder="Card Name"
+          value={cardName}
+          onChange={(e) => setCardName(e.target.value)}
+          className="border rounded px-4 py-2 mr-2"
+        />
+        <input
+          type="text"
+          placeholder="details"
+          value={details}
+          onChange={(e) => setdetails(e.target.value)}
+          className="border rounded px-4 py-2 mr-2" />
+
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((index) => (
           <input
+            key={index}
             type="text"
-            placeholder="Services"
-            className="px-2 py-1 mr-2 "
-            value={newService}
-            onChange={handleChange}
-          />
-          <button className="px-3 py-1 bg-blue-500 text-white rounded-md" onClick={handleAddService}>
-            Add Service
-          </button>
-        </div>
+            placeholder={`Type of Cleaning ${index}`}
+            value={cleaningTypes[index - 1]}
+            onChange={(e) => {
+              const updatedCleaningTypes = [...cleaningTypes];
+              updatedCleaningTypes[index - 1] = e.target.value;
+              setCleaningTypes(updatedCleaningTypes);
+            }}
+            className="border rounded px-4 py-2 mr-2" />
+        ))}
+        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
+          Create Card
+        </button>
+      </form>
+      <div className="flex flex-row justify-evenly  items-center md:w-[1200px] ml-72">
+        {paginatedServices.map((service) => (
+          <div key={service.id} className="border shadow-2xl mx-auto  p-4 md:w-[320px] md:h-[320px] mb-10 mt-10   ">
+            <img src={service.photo} alt={service.name} className="mb-2 md:w-[300px] md:h-[200px]" />
+            <p className="font-bold">{service.name}</p>
+            <p>{service.cardName}</p>
+            <div className="flex justify-between mt-4">
+              <Link to={`/details/${service.id}`}
+                className="bg-gray-200 text-gray-700 px-2 py-1 rounded"
+                onClick={handleClick} >
+                DetailsF
+              </Link>
+              <div>
+                {editingId === service.id ? (
+                  <button onClick={(e) => handleSubmit(e, service.id)} className="bg-blue-500 text-white px-2 py-1 rounded mr-2">
+                    Save
+                  </button>
+                ) : (
+                  <button onClick={() => handleEdit(service.id, service.serviceName, service.cardName, service.photo, service.details, service.cleaningTypes)} className="bg-green-500 text-white px-2 py-1 rounded mr-2">
+                    Edit
+                  </button>
+                )}
+                <button onClick={() => handleDelete(service.id)} className="bg-red-500 text-white px-2 py-1 rounded">
+                  Delete
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        ))}
+
       </div>
-      <table className="table-auto border-collapse border border-gray-800 ml-72 mt-6">
-        <thead>
-          <tr>
-            <th className="border px-4 py-2">Services</th>
-            <th className="border px-4 py-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody className='font-bold'>
-          {generateRows()}
-        </tbody>
-      </table>
+      {/* Pagination Buttons */}
+      <div className="flex justify-center mt-4">
+        {pageNumbers.map((page) => (
+          <button
+            key={page}
+            onClick={() => handlePageChange(page - 1)}
+            className={`px-3 h-8 rounded-full focus:outline-none ${currentPage === page - 1 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+              }`}
+          >
+            {page}
+          </button>
+        ))}
+      </div>
+
+
     </div>
+
   );
 };
 
-export default ServicesTable;
+export default ServicesCard;

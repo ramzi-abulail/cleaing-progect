@@ -66,7 +66,7 @@ function OurServices() {
           </div>
 
           {/* 4th card */}
-{   (role==2 ) &&      <div className='mb-4 border shadow-2xl md:w-80'>
+          <div className='mb-4 border shadow-2xl md:w-80'>
             <img className="rounded-t-lg md:h-60 p-2" src={img12} alt="" />
             <div className="p-5">
               <h5 className="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white text-center">School Cleaning</h5>
@@ -77,7 +77,7 @@ function OurServices() {
                 </svg>
               </Link>
             </div>
-          </div>}
+          </div>
 
         </div>
 

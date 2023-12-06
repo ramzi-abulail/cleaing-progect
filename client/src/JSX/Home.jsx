@@ -4,6 +4,8 @@ import AboutUsSection from './AboutUsSection'
 import OurServices from './OurServices'
 import Card from './Card'
 import RecentWork from './RecentWork '
+import ServicesCardHome from './ServicesCardHome'
+import ServiceDetailsHome from './ServiceDetailsHome'
 
 function Home() {
   return (
@@ -11,7 +13,8 @@ function Home() {
     <div>
       <HeroSlider />
       <AboutUsSection />
-      <OurServices />
+      <ServicesCardHome />
+      <ServiceDetailsHome/>
      <RecentWork/>
       <Card />
     </div>

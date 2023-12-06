@@ -32,6 +32,8 @@ import Payment2 from '../src/JSX/Payment2';
 import React, { useEffect, useState } from 'react';
 import ServicesCard from './JSX/ServicesCard';
 import ServiceDetails from './JSX/ServiceDetails';
+import ServicesCardHome from './JSX/ServicesCardHome';
+import ServiceDetailsHome from './JSX/ServiceDetailsHome';
 
 
 
@@ -62,10 +64,9 @@ function App() {
             <Route path='/Login' element={<Login />} />
             <Route path='/Signup' element={<Signup />} />
             <Route path='/LoginAdmin' element={<LoginAdmin />} />
-            <Route path="/ServicesCard" element={<ServicesCard/>} />
-            <Route path="/details/:id" component={<ServiceDetails/>} />
-
-
+            <Route path="/ServicesCardHome" element={<ServicesCardHome/>} />
+            <Route path="/details/:id" element={<ServiceDetailsHome/>} />
+       
           </Routes>
           <Footer />
 
@@ -79,7 +80,8 @@ function App() {
           <Routes>
             <Route path='/UserTable' element={<UserTable />} />
             <Route path='/AdmainUser' element={<AdmainUser />} />
-            <Route path='/ServicesTable' element={<ServicesTable />} />
+            <Route path='/ServicesCard' element={<ServicesCard />} />
+            <Route path="/details/:id" element={<ServiceDetails/>} />
           </Routes>
           <Dashboard />
         </BrowserRouter>
@@ -112,6 +114,7 @@ function App() {
             <Route path='/Profile' element={<Profile />} />
             <Route path='/Payment2' element={<Payment2 />} />
             <Route path='/ThankYou' element={<ThankYou />} />
+            <Route path="/details/:id" element={<ServiceDetails/>} />
           </Routes>
           <Footer />
         </BrowserRouter>

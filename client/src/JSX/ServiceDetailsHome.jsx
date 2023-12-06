@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
-const ServiceDetails = (props) => {
+const ServiceDetailsHome = (props) => {
   const [service, setService] = useState({});
   const { id } = useParams(); // Get ID from props
   console.log("id", id)
@@ -68,4 +68,4 @@ const ServiceDetails = (props) => {
 );
 };
 
-export default ServiceDetails;
+export default ServiceDetailsHome;

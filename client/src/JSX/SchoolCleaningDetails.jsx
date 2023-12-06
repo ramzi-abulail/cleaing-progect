@@ -38,15 +38,15 @@ function SchoolCleaningDetails() {
             <div className='flex flex-col '>
                 <p className="text-4xl font-bold  text-blue-500 ml-20 mt-10"> What we Do </p>
                 <div className='ml-28 mt-6 flex flex-col justify-evenly space-y-4' >
-                    <p class="text-m text-gray-700 dark:text-gray-400"> <p className=' font-bold text-xl'>Classroom Cleaning </p>  Dusting, wiping, and disinfecting desks, chairs, tables, and other surfaces to eliminate dust, dirt, and germs </p>
-                    <p class="text-m text-gray-700 dark:text-gray-400"> <p className=' font-bold text-xl'>Floor Care: </p>  Sweeping, mopping, vacuuming, and possibly specialized floor treatments to keep floors clean and well-maintained. </p>
-                    <p class="text-m text-gray-700 dark:text-gray-400"> <p className=' font-bold text-xl'>Restroom Sanitization</p> Thorough cleaning and disinfection of toilets, sinks, countertops, mirrors, floors, and restocking essential supplies like toilet paper, soap, and hand towels. </p>
-                    <p class="text-m text-gray-700 dark:text-gray-400"> <p className=' font-bold text-xl'>Bathroom Cleaning:</p> Sanitizing toilets, sinks, showers, and tubs.  </p>
-                    <p class="text-m text-gray-700 dark:text-gray-400"> <p className=' font-bold text-xl'>Common Area Cleaning: </p>Cleaning and disinfecting common areas such as corridors, hallways, cafeterias, and gymnasiums.  </p>
-                    <p class="text-m text-gray-700 dark:text-gray-400"> <p className=' font-bold text-xl'>Trash Removal</p> Emptying and replacing trash bags in bins throughout the school premises and ensuring proper disposal of waste and recyclables. </p>
-                    <p class="text-m text-gray-700 dark:text-gray-400"> <p className=' font-bold text-xl'>High-Touch Surface Disinfection </p> Regularly sanitizing and disinfecting frequently touched surfaces like doorknobs, light switches, handrails, shared equipment, and other common touchpoints to minimize the spread of germs. </p>
-                    <p class="text-m text-gray-700 dark:text-gray-400"> <p className=' font-bold text-xl'>Window and Glass Cleaning </p> Cleaning windows, glass doors, partitions, and other transparent surfaces to maintain cleanliness and a pleasant learning environment. </p>
-                    <p class="text-m text-gray-700 dark:text-gray-400"> <p className=' font-bold text-xl'>Playground Area Cleaning:  </p> Cleaning and sanitizing outdoor play equipment and areas to ensure a safe and hygienic environment for children </p>
+                    <p class="text-m text-gray-700 dark:text-gray-400">  Classroom Cleaning   Dusting, wiping, and disinfecting desks, chairs, tables, and other surfaces to eliminate dust, dirt, and germs </p>
+                    <p class="text-m text-gray-700 dark:text-gray-400">  Floor Care:   Sweeping, mopping, vacuuming, and possibly specialized floor treatments to keep floors clean and well-maintained. </p>
+                    <p class="text-m text-gray-700 dark:text-gray-400">  Restroom Sanitization Thorough cleaning and disinfection of toilets, sinks, countertops, mirrors, floors, and restocking essential supplies like toilet paper, soap, and hand towels. </p>
+                    <p class="text-m text-gray-700 dark:text-gray-400">  Bathroom Cleaning: Sanitizing toilets, sinks, showers, and tubs.  </p>
+                    <p class="text-m text-gray-700 dark:text-gray-400">  Common Area Cleaning: Cleaning and disinfecting common areas such as corridors, hallways, cafeterias, and gymnasiums.  </p>
+                    <p class="text-m text-gray-700 dark:text-gray-400">  Trash Removal Emptying and replacing trash bags in bins throughout the school premises and ensuring proper disposal of waste and recyclables. </p>
+                    <p class="text-m text-gray-700 dark:text-gray-400">  High-Touch Surface Disinfection  Regularly sanitizing and disinfecting frequently touched surfaces like doorknobs, light switches, handrails, shared equipment, and other common touchpoints to minimize the spread of germs. </p>
+                    <p class="text-m text-gray-700 dark:text-gray-400">  Window and Glass Cleaning Cleaning windows, glass doors, partitions, and other transparent surfaces to maintain cleanliness and a pleasant learning environment. </p>
+                    <p class="text-m text-gray-700 dark:text-gray-400">  Playground Area Cleaning:   Cleaning and sanitizing outdoor play equipment and areas to ensure a safe and hygienic environment for children </p>
 
 
                 </div>
