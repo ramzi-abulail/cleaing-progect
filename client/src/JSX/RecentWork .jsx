@@ -38,7 +38,7 @@ const RecentWork = () => {
     const slideStyles = {
         position: 'relative',
         width: '100%',
-        height: '600px', // Update with your desired height
+        height: '500px', // Update with your desired height
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         /* Other necessary styles for the hero slide */
@@ -57,17 +57,18 @@ const RecentWork = () => {
     
 
     return (
-        <div>
+        <div className=' shadow-2xl mx-6 '>
 
 
-            <div className='text-center font-bold text-3xl m-10 text-blue-500'>
-                    <a> RecentWork </a>
+            <div className='text-center font-bold text-3xl pt-8 text-blue-500 '>
+                    <a className=''> RecentWork </a>
                 </div>
             <Carousel
                 showStatus={false}
                 showArrows={false}
                 selectedItem={currentSlide}
                 onChange={setCurrentSlide}
+                className='p-4 mt-8'
             >
                 {slideContent.map((slide, index) => (
                     <div key={index}>
@@ -76,6 +77,8 @@ const RecentWork = () => {
                             style={{
                                 ...slideStyles,
                                 backgroundImage: `url(${slide.image})`,
+            
+                     
                             }}
                         >
                             

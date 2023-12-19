@@ -44,45 +44,45 @@ const ServicesCardHome = () => {
     };
 
     return (
-        <div className="container mx-auto mt-8">
-            <div>
+        <div className="container mt-8 md:w-[1200px] ml-28">
+            <div className='mt-20 ml-36'>
                 <div className='text-center font-bold text-3xl mb-2 text-blue-500'>
                     <a>Our Services</a>
-                </div>
+                 </div>
                 <div className='text-center font-bold text-2xl mb-4 text-blue-500'>
                     <a>What We Are Offering</a>
                 </div>
 
             </div>
-            <div className="mt-8 grid grid-cols-4 md-w-[1200px] ">
+            <div className="mt-8 grid grid-cols-4 md-w-[1200px] gap-20   ">
                 {paginatedServices.map((service) => (
-                    <div key={service.id} className="border shadow-2xl ml-10 p-4 md:w-[300px] md:h-[320px] mb-20 mt-20  text-2xl text-center">
-                        <img src={service.photo} alt={service.name} className="mb-2 md:w-[300px] md:h-[200px]" />
+
+                    <div key={service.id} className="border shadow-2xl md:w-[300px] md:h-[320px] mb-20 mt-20  text-2xl text-center rounded-3xl ">
+                        
+                        <img src={service.photo} alt={service.name} className="mb-2 md:w-[300px] md:h-[200px] rounded-3xl p-2 " />
+                        
                         <p className="font-bold">{service.name}</p>
-                        <p>{service.cardName}</p>
+                           
+                           < p>{service.cardName}</p>
+                        
                         <div className="flex justify-between mt-4 ">
-                            <Link to={`/details/${service.id}`}
-                                className="bg-blue-500 text-white px-2 py-1 rounded w-full text-center"
-                                onClick={handleClick} // Attach the handleClick function to onClick event
-                            >
+                        
+                            <Link to={`/ServiceDetailsHome/${service.id}`}
+                                className="bg-blue-500 text-white md:h-10 md:w-60 text-center rounded-2xl ml-8 " onClick={handleClick} >
                                 Details
-
                             </Link>
-
                         </div>
-
                     </div>
-
                 ))}
 
             </div>
             {/* Pagination Buttons */}
-            <div className="flex justify-center mt-4">
+            <div className="flex justify-center ml-20">
                 {pageNumbers.map((page) => (
                     <button
                         key={page}
                         onClick={() => handlePageChange(page - 1)}
-                        className={`px-3 h-8 rounded-full focus:outline-none ${currentPage === page - 1 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                        className={`px-3 h-8 rounded-full focus:outline-none ${currentPage === page - 1 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black '
                             }`}
                     >
                         {page}

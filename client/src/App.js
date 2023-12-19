@@ -30,6 +30,7 @@ import ServicesCardHome from './JSX/ServicesCardHome';
 import ServiceDetailsHome from './JSX/ServiceDetailsHome';
 import OfficeForm from './JSX/OfficeForm';
 import SchoolForm1 from './JSX/SchoolForm';
+import FirebaseImageUpload from './FireBase/FirebaseImageUpload';
 
 
 
@@ -57,21 +58,17 @@ function App() {
 
         <BrowserRouter>
           <NavBar />
+   
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/Login' element={<Login />} />
             <Route path='/Signup' element={<Signup />} />
             <Route path='/LoginAdmin' element={<LoginAdmin />} />
             <Route path="/ServicesCardHome" element={<ServicesCardHome/>} />
-            <Route path="/details/:id" element={<ServiceDetailsHome/>} />
+            <Route path="/ServiceDetailsHome/:id" element={<ServiceDetailsHome/>} />
             <Route path='/AboutUs' element={<AboutUs />} />
-            <Route path="/services/:id" element ={<ServiceDetailsHome/>} />
-            <Route path='/OfficeForm' element={<OfficeForm />} />
-            <Route path='/CompanyForm' element={<CompanyForm />} />
-            <Route path='/SchoolForm1' element={<SchoolForm1 />} />
-            <Route path='/HouseForm' element={<HouseForm />} />
-            <Route path='/Payment2' element={<Payment2 />} />
-           
+        
+            {/* <Route path='/FirebaseImageUpload' element={<FirebaseImageUpload />} /> */}
           </Routes>
           <Footer />
 
@@ -107,13 +104,18 @@ function App() {
             <Route path='/ContactUs' element={<ContactUs />} />
             <Route path='/AboutUs' element={<AboutUs />} />
             <Route path='/ProfileForm' element={<ProfileForm />} />
-            <Route path='/Profile' element={<Profile />} />
             <Route path='/Payment2' element={<Payment2 />} />
             <Route path='/ThankYou' element={<ThankYou />} />
-            <Route path="/details/:id" element={<ServiceDetails/>} />
-            
+            <Route path="/Profile" element={<Profile/>} />
+            <Route path="/ServicesCardHome" element={<ServicesCardHome/>} />
+            <Route path="/ServiceDetailsHome/:id" element={<ServiceDetailsHome/>} />
+            <Route path='/OfficeForm' element={<OfficeForm />} />
+            <Route path='/CompanyForm' element={<CompanyForm />} />
+            <Route path='/SchoolForm1' element={<SchoolForm1 />} />
+            <Route path='/HouseForm' element={<HouseForm />} />
           </Routes>
           <Footer />
+      
         </BrowserRouter>
       }
 

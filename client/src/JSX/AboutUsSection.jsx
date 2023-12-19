@@ -5,10 +5,10 @@ function AboutUsSection() {
     return (
         <div>
 
-            <section className="flex items-center bg-whitelg:h-screen font-poppins bg-white mt-5">
+            <section className="flex items-center bg-whitelg:h-screen font-poppins bg-white mt-5 border shadow-2xl mx-6">
                 <div className="justify-center flex-1 max-w-6xl py-4 mx-auto lg:py-6 md:px-6">
                     <div className="px-4 mb-10 md:text-center md:mb-20">
-                        <p className="mb-2 text-3xl font-semibold text-blue-500">
+                        <p className="mb-2 text-3xl font-bold text-blue-500">
                             About Us
                         </p>
                     </div>

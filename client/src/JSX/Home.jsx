@@ -16,7 +16,7 @@ function Home() {
     <div>
       <HeroSlider />
       <AboutUsSection />
-      <ServicesCardHome />
+      <ServicesCardHome/>
       <ServiceDetailsHome />
       <RecentWork />
       <Card />

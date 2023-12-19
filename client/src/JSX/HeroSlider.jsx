@@ -73,7 +73,7 @@ const HeroSlider = () => {
   
 
   return (
-    <div>
+    <div className=' shadow-2xl mx-6'>
       <Carousel
         showStatus={false}
         showArrows={false}

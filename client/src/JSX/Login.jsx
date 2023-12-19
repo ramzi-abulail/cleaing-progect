@@ -39,19 +39,22 @@ function Login() {
 
     try {
       const response = await axios.get(`http://localhost:3001/users?email=${formData.email}`);
-  
+      console.log('Response:', response.data);
       if (response.data.length > 0 && response.data[0].password === formData.password) {
-        console.log('Login successful!', response.data[0]);
-        localStorage.setItem('role', 2);
-        navigate('/');
-      } else {
-        console.error('Invalid credentials!');
-        // Handle incorrect credentials
+        const userData = response.data[0]; // Access the first user's data
+      
+        localStorage.setItem('id', userData.id);
+        localStorage.setItem('firstName', userData.firstName);
+        localStorage.setItem('lastName', userData.lastName);
+        localStorage.setItem('role', 2); // Assuming role is a constant value here
+      
+        console.log('Login successful!', userData);
+        navigate('/');}
+      } catch (error) {
+        console.error('Login error:', error);
       }
-    } catch (error) {
-      console.error('Login error:', error);
-      // Handle login errors or server issues
-    }
+
+
   };
   return (
     <section className="bg-gray-50 dark:bg-gray-900 h-screen flex items-center justify-center">

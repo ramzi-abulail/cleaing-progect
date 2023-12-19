@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import FirebaseImageUpload from '../FireBase/FirebaseImageUpload';
 
 function ProfileForm() {
   const [formData, setFormData] = useState({
@@ -9,22 +10,24 @@ function ProfileForm() {
     email: '',
     city: '',
     country: '',
-    profileImage:'',
+    url:[],
     phone: '',
     streetName: '', 
   });
+  
+  // Inside FirebaseImageUpload component
+
 
   useEffect(() => {
     // Fetch data from JSON server
-    axios.get('http://localhost:3001/AdmainUser')
+    axios.get(`http://localhost:3001/users?id=${localStorage.id}`)
       .then(response => {
-        // Assuming response.data contains the profile data
         setFormData(response.data);
       })
       .catch(error => {
         console.error('Error fetching data:', error);
       });
-  }, []); // Empty dependency array to fetch data only once on component mount
+  }, []);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -40,47 +43,48 @@ function ProfileForm() {
     const formDataToSend = new FormData();
     Object.keys(formData).forEach((key) => {
       formDataToSend.append(key, formData[key]);
-
     });
   
-    console.log(formData)
-    // Append the file to FormData if it exists
-    if (event.target.profileImage.files[1]) {
-      formDataToSend.append('profileImage', event.target.profileImage.files[0]);
-    }
+    console.log(formDataToSend);
+    // Append the file URL to the FormData
+    formDataToSend.append('profileImage', formData.url); // Adjust the key based on your form data
   
-    console.log('Form Data to be sent:', formDataToSend); // Check if the correct data is present here
-  
+    console.log(formData);
     // Send updated data to JSON server
-    axios.put(`http://localhost:3001/AdmainUser/${formData.id}`, formDataToSend, {
+    axios.put(`http://localhost:3001/users/${formData[0].id}`, formDataToSend, {
       headers: {
         'Content-Type': 'multipart/form-data', // Set content type for file upload
       },
     })
-      .then(response => {
-        console.log('Data updated:', response.data);
-        // Handle success, redirect, or perform additional actions
-      })
-      .catch(error => {
-        console.error('Error updating data:', error);
-        // Handle error scenarios
-      });
+    .then(response => {
+      console.log('Data updated:', response.data);
+      // Handle success, redirect, or perform additional actions
+    })
+    .catch(error => {
+      console.error('Error updating data:', error);
+      // Handle error scenarios
+    });
   };
+  
+// Inside ProfileForm component
+const handleImageUpdate = (imageURL) => {
+  console.log(imageURL);
+  setFormData(prevData => ({
+    ...prevData,
+    url: imageURL, // Assuming 'url' is the key for the image URL in formData
+  }));
+};
+
 
   return (
     <form onSubmit={handleSubmit}>
 
       <div className="space-y-12 md:ml-10 md:mr-10">
         <div className="border-b border-gray-900/10 pb-12">
-          <div>
-            <input
-              type="file"
-              accept="image/*"
-              name="profileImage"
-              onChange={handleInputChange} />
-          </div>
+        <FirebaseImageUpload handleImageUpdate={handleImageUpdate} />
           <h2 className="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+       
             <div className="sm:col-span-3">
               <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
                 First name

@@ -14,7 +14,7 @@ function OfficeForm() {
     squareFootage: '',
   });
 
-  const [price, setPrice] = useState(0);
+  const [totalPrice, settotalPrice] = useState(0);
   const navigate = useNavigate();
   const handleCreate = async (e) => {
     e.preventDefault();
@@ -22,7 +22,7 @@ function OfficeForm() {
       // Include the price in the formData before sending to the server
       const dataToSend = {
         ...formData,
-        price: price, // Add the price to the form data
+        totalPrice: totalPrice, // Add the price to the form data
       };
 
       const response = await axios.post('http://localhost:3001/order', dataToSend);
@@ -36,7 +36,7 @@ function OfficeForm() {
         numEmployees: '',
         squareFootage: '',
       });
-      setPrice(0); // Reset price
+      settotalPrice(0); // Reset price
       navigate('/Payment2');
     } catch (error) {
       console.error('Error creating office:', error);
@@ -70,7 +70,7 @@ function OfficeForm() {
       const calculatedPrice =
         (priceMap[squareFootage] || 0) + (priceMap[numEmployees] || 0);
 
-      setPrice(calculatedPrice);
+        settotalPrice(calculatedPrice);
     };
 
     calculatePrice();
@@ -167,7 +167,7 @@ function OfficeForm() {
           </div>
 
           <div className="mb-4 text-center font-semibold">
-            Price: ${price}
+            totalPrice: ${totalPrice}
           </div>
 
           {/* Submit button */}

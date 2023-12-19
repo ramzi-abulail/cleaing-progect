@@ -41,6 +41,10 @@ const InfoForm = () => {
       });
 
       console.log('Data posted successfully', response.data.users);
+      localStorage.setItem('id',formData. id);
+      localStorage.setItem('firstName', formData.firstName);
+      localStorage.setItem('lastName',  formData. lastName);
+
       alert('Data saved!');
       navigate('/Login');
     } catch (error) {

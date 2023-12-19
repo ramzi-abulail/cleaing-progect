@@ -14,6 +14,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "firebase": "^10.7.1",
     "flowbite-react": "^0.6.4",
     "jsonwebtoken": "^9.0.2",
     "nodemon": "^3.0.1",
@@ -32,6 +33,7 @@
     "stripe": "^14.5.0",
     "tw-elements-react": "^1.0.0-alpha2",
     "use-stripe-subscription": "^1.0.6",
+    "uuid": "^9.0.1",
     "web-vitals": "^2.1.4",
     "webpack": "^5.89.0"
   },

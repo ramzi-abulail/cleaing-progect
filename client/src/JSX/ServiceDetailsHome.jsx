@@ -50,7 +50,7 @@ const ServiceDetailsHome = (props) => {
     };
 
     return (
-        <div className="container mx-auto mt-8">
+        <div className="container mx-auto mt-10 ">
             {service && Object.keys(service).length > 0 && (
                 <div className="border rounded p-4">
                     <div className='flex flex-col items-center'>
@@ -59,11 +59,11 @@ const ServiceDetailsHome = (props) => {
                                 {service.serviceName}
                             </div>
                         )}
-                        {service.photo && <img src={service.photo} alt={service.serviceName} className='md:w-[700px] md-h-[700px] rounded-xl shadow-xl mt-6' />}
+                        {service.photo && <img src={service.photo} alt={service.serviceName} className='md:w-[700px] md-h-[700px] rounded-xl shadow-2xl mt-6 ' />}
                     </div>
 
                     {(service.details || (service.cleaningTypes && service.cleaningTypes.some(type => type.trim() !== ''))) && (
-                        <div className='flex flex-col ml-10 mr-20 mt-20'>
+                        <div className='flex flex-col  mr-20 mt-20 mx-16'>
                             {service.details && (
                                 <>
                                     <h2 className=' font-bold text-3xl text-blue-500'>Service Details</h2>
@@ -88,6 +88,7 @@ const ServiceDetailsHome = (props) => {
                         </div>
                     )}
                     <div className="ml-[1100px] my-4">
+
                         <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-60 h-12">
 
                             book with us now

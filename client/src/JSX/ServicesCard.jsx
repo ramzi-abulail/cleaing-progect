@@ -106,7 +106,7 @@ const ServicesCard = () => {
 
     return (
         <div className="container mx-auto mt-8">
-            <form onSubmit={handleSubmit} className="flex items-center justify-center flex-wrap gap-4">
+            <form onSubmit={handleSubmit} className="flex items-center justify-center flex-wrap gap-6 ml-72">
                 <input
                     type="text"
                     placeholder="Service Name"

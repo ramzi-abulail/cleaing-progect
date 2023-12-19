@@ -2,66 +2,122 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'react-datepicker/dist/react-datepicker.css';
 
-const Card= () => {
-  const [name, setName] = useState('');
+const Card = () => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
   const [subject, setSubject] = useState('');
   const [cards, setCards] = useState([]);
   const [editingCardId, setEditingCardId] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
+  const userRole = localStorage.getItem('role');
+  const canCreateCard = userRole === '2';
+  const [userData, setUserData] = useState(null);
+  const userId = localStorage.getItem('id');
+
+
+
 
   useEffect(() => {
-    fetchCards();
+    const storedId = localStorage.getItem('id');
+    const storedFirstName = localStorage.getItem('firstName');
+    const storedLastName = localStorage.getItem('lastName');
+
+    if (storedId) {
+      setUserData({ id: storedId });
+      setFirstName(storedFirstName || '');
+      setLastName(storedLastName || '');
+    }
   }, []);
 
-  const fetchCards = async () => {
-    try {
-      const response = await axios.get('http://localhost:3001/card');
-      setCards(response.data);
-    } catch (error) {
-      console.error('Error fetching cards:', error);
+  useEffect(() => {
+    axios.get('http://localhost:3001/card')
+      .then((response) => {
+        setCards(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching cards:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    axios.get('http://localhost:3001/card')
+      .then((response) => {
+        setCards(response.data);
+      })
+      .catch((error) => {
+        console.error('Error fetching cards:', error);
+      });
+  }, []);
+
+  const isUserCard = (cardUserId) => {
+    return userId === cardUserId;
+  };
+
+  const handleEdit = (cardId, cardUserId) => {
+    if (userRole === '2' && isUserCard(cardUserId)) {
+      const cardToEdit = cards.find((card) => card.id === cardId);
+      setFirstName(cardToEdit.firstName);
+      setLastName(cardToEdit.lastName);
+      setSubject(cardToEdit.subject);
+      setEditingCardId(cardId);
+    } else {
+      console.log('You are not allowed to edit this card.');
     }
   };
+
+
+  const handleDelete = async (cardId, cardUserId) => {
+    if (userRole === '2' && isUserCard(cardUserId)) {
+      try {
+        await axios.delete(`http://localhost:3001/card/${cardId}`);
+        const updatedCards = cards.filter((card) => card.id !== cardId);
+        setCards(updatedCards);
+      } catch (error) {
+        console.error('Error deleting card:', error);
+      }
+    } else {
+      console.log('You are not allowed to delete this card.');
+    }
+  };
+
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      if (editingCardId !== null) {
-        await axios.put(`http://localhost:3001/card/${editingCardId}`, {
-          name: name,
-          subject: subject,
-        });
-        console.log('Card updated successfully');
-        setEditingCardId(null);
+      if (canCreateCard) {
+        const userData = {
+          firstName: localStorage.getItem('firstName') || '',
+          lastName: localStorage.getItem('lastName') || '',
+          
+        };
+
+        if (editingCardId !== null) {
+          await axios.put(`http://localhost:3001/card/${editingCardId}`, {
+            ...userData,
+            subject: subject,
+          });
+          console.log('Card updated successfully');
+          const updatedCards = cards.map((card) =>
+            card.id === editingCardId ? { ...card, ...userData, subject } : card
+          );
+          setCards(updatedCards);
+          setEditingCardId(null);
+        } else {
+          const response = await axios.post('http://localhost:3001/card', {
+            ...userData,
+            subject: subject,
+          });
+          console.log('Card created successfully');
+          const newCard = response.data;
+          setCards([...cards, newCard]);
+        }
+        setSubject('');
       } else {
-        await axios.post('http://localhost:3001/card', {
-          name: name,
-          subject: subject,
-        });
-        console.log('Card created successfully');
+        console.log('You do not have permission to create or edit a card.');
+        // Optionally show a message or handle unauthorized action
       }
-      setName('');
-      setSubject('');
-      fetchCards();
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  };
-
-  const handleEditCard = (id) => {
-    const cardToEdit = cards.find((card) => card.id === id);
-    if (cardToEdit) {
-      setName(cardToEdit.name);
-      setSubject(cardToEdit.subject);
-      setEditingCardId(id);
-    }
-  };
-
-  const handleDeleteCard = async (id) => {
-    try {
-      await axios.delete(`http://localhost:3001/card/${id}`);
-      console.log('Card deleted successfully:', id);
-      fetchCards();
     } catch (error) {
       console.error('Error:', error);
     }
@@ -78,18 +134,10 @@ const Card= () => {
   const pageNumbers = Array.from(Array(totalPages).keys());
 
   return (
-    <div className='bg-white md:w-[800px] mx-auto'>
+    <div className='bg-white md:w-[800px] mx-auto  shadow-2xl mb-10'>
       <div className="container mx-auto px-4">
-        <h1 className="text-3xl font-bold text-center mt-4 text-blue-500">Your Feedback</h1>
-  
+        <h1 className="text-3xl font-bold text-center mt-4 text-blue-500 pt-4">Your Feedback</h1>
         <form onSubmit={handleSubmit} className="flex flex-col mt-8">
-          <input
-            type="text"
-            placeholder="Your Name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            className="border border-gray-300 rounded p-2 w-full mb-4"
-          />
           <input
             type="text"
             placeholder="Subject"
@@ -98,48 +146,67 @@ const Card= () => {
             className="border border-gray-300 rounded p-2 w-full"
           />
           <button type="submit" className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
-            {editingCardId !== null ? 'Update Card' : 'Add Card'}
+            {editingCardId !== null ? 'Update Card' : 'Add your feedback'}
           </button>
         </form>
-  
-        {/* Display Paginated Cards */}
-        <div className="mt-10 flex flex-wrap justify-center">
+
+        <div className="mt-10 flex flex-wrap justify-center z-[]">
           {paginatedCards.map((card) => (
             <div key={card.id} className="flex flex-col bg-white border rounded-lg shadow-lg w-80 h-72 p-4 m-4">
-              <div className="flex items-center justify-between ml-4 mt-2">
-                <h2 className="text-xl font-bold mb-2">{card.name}</h2>
+              <p className="ml-4 mb-2">First Name: {card.firstName}</p>
+              <p className="ml-4 mb-2">Last Name: {card.lastName}</p>
+              <p className="mt-2 ml-4 mb-4">Subject: {card.subject}</p>
+              <div className="flex items-center justify-around mt-auto z-10">
+                {isUserCard(card.id) && (
+                  <div className="flex items-center justify-around mt-auto z-10">
+                    <button
+                      type="button"
+                      onClick={() => handleEdit(card.id, card.userId)}
+                      className="text-black font-bold py-2 px-4 rounded"
+                    >
+                      Edit
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleDelete(card.id, card.userId)}
+                      className="text-black font-bold py-2 px-4 rounded"
+                    >
+                      Delete
+                    </button>
+                  </div>
+                )}
+
               </div>
-              <hr />
-              <p className="mt-2 ml-4 mb-4">{card.subject}</p>
-              <div className="flex items-center justify-around mt-auto">
+              {/* {isUserCard(card.userId) && (
+                <div className="flex items-center justify-around mt-auto z-10">
                 <button
                   type="button"
-                  onClick={() => handleEditCard(card.id)}
+                  onClick={() => handleEdit(card.id, card.userId)}
                   className="text-black font-bold py-2 px-4 rounded"
                 >
                   Edit
                 </button>
                 <button
                   type="button"
-                  onClick={() => handleDeleteCard(card.id)}
+                  onClick={() => handleDelete(card.id, card.userId)}
                   className="text-black font-bold py-2 px-4 rounded"
                 >
                   Delete
                 </button>
               </div>
+            )} */}
             </div>
+
           ))}
         </div>
-  
-        {/* Pagination Buttons */}
+
         <div className="flex justify-center mt-4">
           {pageNumbers.map((page) => (
             <button
               key={page}
               onClick={() => handlePageChange(page)}
-              className={`px-3 h-8 rounded-full focus:outline-none ${
-                currentPage === page ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
-              }`}
+              className={`px-3 h-8 rounded-full focus:outline-none ${currentPage === page ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black'
+                }`}
             >
               {page + 1}
             </button>

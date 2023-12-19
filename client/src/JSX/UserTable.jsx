@@ -175,7 +175,7 @@ const UserTable = () => {
     <div>
       <div className="flex justify-center items-center mb-4 mt-10 flex-col ">
         <h2 className="text-xl font-semibold mr-4">User Table</h2>
-        <div className="flex items-center flex-col">
+        <div className="mt-8 grid grid-cols-4 md-w-[1200px] gap-4">
           <input
             type="text"
             placeholder="firstName"
