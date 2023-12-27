@@ -12,7 +12,8 @@ function OfficeForm() {
     businessName: '',
     numEmployees: '',
     squareFootage: '',
-  });
+    serviceName:'Office Cleaning',
+    });
 
   const [totalPrice, settotalPrice] = useState(0);
   const navigate = useNavigate();

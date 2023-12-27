@@ -13,10 +13,13 @@ const UserTable = () => {
     country: '',
     StreetName: '',
     password: ''
-
   });
 
   useEffect(() => {
+    fetchUserData();
+  }, []);
+
+  const fetchUserData = () => {
     axios.get('http://localhost:3001/users')
       .then((response) => {
         setUserData(response.data);
@@ -24,7 +27,7 @@ const UserTable = () => {
       .catch((error) => {
         console.error('Error fetching data:', error);
       });
-  }, []);
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -58,12 +61,8 @@ const UserTable = () => {
   const handleSave = (rowIndex) => {
     setEditableRow(null);
     const updatedUserData = [...userData];
-    // Perform logic to save changes to the server using updatedUserData
-    // For instance, you can use axios.put or axios.patch to update the data
-    // Example:
-    axios.put(`http://localhost:3001/usertable/${rowIndex}`, updatedUserData[rowIndex])
+    axios.put(`http://localhost:3001/users/${updatedUserData[rowIndex].id}`, updatedUserData[rowIndex])
       .then(() => {
-        // Assuming successful update, update the state with the modified user data
         setUserData(updatedUserData);
       })
       .catch((error) => {
@@ -72,12 +71,12 @@ const UserTable = () => {
   };
 
   const handleDelete = (rowIndex) => {
-    const updatedUserData = userData.filter((row, index) => index !== rowIndex);
-    setUserData(updatedUserData);
-    // Perform logic to delete row from the server using userData state
-    // For instance, you can use axios.delete to delete the data
-    // Example:
-    axios.delete(`http://localhost:3001/usertable/${rowIndex}`)
+    const userId = userData[rowIndex].id;
+    axios.delete(`http://localhost:3001/users/${userId}`)
+      .then(() => {
+        const updatedUserData = userData.filter((user) => user.id !== userId);
+        setUserData(updatedUserData);
+      })
       .catch((error) => {
         console.error('Error deleting user:', error);
       });
@@ -116,6 +115,15 @@ const UserTable = () => {
           row.email
         )}</td>
         <td className="border px-4 py-2">{editableRow === rowIndex ? (
+          <input type="text" value={row.password} onChange={(e) => {
+            const updatedUserData = [...userData];
+            updatedUserData[rowIndex].password = e.target.value;
+            setUserData(updatedUserData);
+          }} />
+        ) : (
+          row.password
+        )}</td>
+        <td className="border px-4 py-2">{editableRow === rowIndex ? (
           <input type="text" value={row.phone} onChange={(e) => {
             const updatedUserData = [...userData];
             updatedUserData[rowIndex].phone = e.target.value;
@@ -151,6 +159,7 @@ const UserTable = () => {
         ) : (
           row.StreetName
         )}</td>
+         
 
 
 
@@ -200,6 +209,14 @@ const UserTable = () => {
             value={newUser.email}
             onChange={handleChange}
           />
+              <input
+            type="text"
+            placeholder="password"
+            className="px-2 py-1 mr-2"
+            name="password"
+            value={newUser.password}
+            onChange={handleChange}
+          />
           <input
             type="text"
             placeholder="Phone"
@@ -240,7 +257,8 @@ const UserTable = () => {
           <tr>
             <th className="border px-4 py-2">firstName</th>
             <th className="border px-4 py-2">lastName</th>
-            <th className="border px-4 py-2">Gmail</th>
+            <th className="border px-4 py-2">gmail</th>
+            <th className="border px-4 py-2">password</th>
             <th className="border px-4 py-2">Phone</th>
             <th className="border px-4 py-2">city</th>
             <th className="border px-4 py-2">country</th>

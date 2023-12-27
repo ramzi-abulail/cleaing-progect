@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import FirebaseImageUpload from '../FireBase/FirebaseImageUpload';
 
 function ProfileForm() {
   const [formData, setFormData] = useState({
@@ -10,16 +9,12 @@ function ProfileForm() {
     email: '',
     city: '',
     country: '',
-    url:[],
     phone: '',
-    streetName: '', 
+    StreetName: '', 
+    password:'',
   });
   
-  // Inside FirebaseImageUpload component
-
-
   useEffect(() => {
-    // Fetch data from JSON server
     axios.get(`http://localhost:3001/users?id=${localStorage.id}`)
       .then(response => {
         setFormData(response.data);
@@ -36,52 +31,48 @@ function ProfileForm() {
       [name]: value,
     }));
   };
-
   const handleSubmit = (event) => {
     event.preventDefault();
   
-    const formDataToSend = new FormData();
-    Object.keys(formData).forEach((key) => {
-      formDataToSend.append(key, formData[key]);
-    });
+    const updatedData = {
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      city: formData.city,
+      country: formData.country,
+      StreetName: formData.StreetName,
+      password: formData.password,
+      id: localStorage.id,
+    };
   
-    console.log(formDataToSend);
-    // Append the file URL to the FormData
-    formDataToSend.append('profileImage', formData.url); // Adjust the key based on your form data
+    // Check if any field values have changed
+    const hasChanges = Object.keys(updatedData).some(
+      key => updatedData[key] !== formData[key]
+    );
   
-    console.log(formData);
-    // Send updated data to JSON server
-    axios.put(`http://localhost:3001/users/${formData[0].id}`, formDataToSend, {
-      headers: {
-        'Content-Type': 'multipart/form-data', // Set content type for file upload
-      },
-    })
-    .then(response => {
-      console.log('Data updated:', response.data);
-      // Handle success, redirect, or perform additional actions
-    })
-    .catch(error => {
-      console.error('Error updating data:', error);
-      // Handle error scenarios
-    });
+    if (hasChanges) {
+      axios.put(`http://localhost:3001/users/${localStorage.id}`, updatedData)
+        .then(response => {
+          console.log('Data updated:', response.data);
+          // Handle success, redirect, or perform additional actions
+        })
+        .catch(error => {
+          console.error('Error updating data:', error);
+          // Handle error scenarios
+        });
+    } else {
+      // If no changes, inform the user or handle accordingly
+      console.log('No changes made.');
+    }
   };
-  
-// Inside ProfileForm component
-const handleImageUpdate = (imageURL) => {
-  console.log(imageURL);
-  setFormData(prevData => ({
-    ...prevData,
-    url: imageURL, // Assuming 'url' is the key for the image URL in formData
-  }));
-};
-
 
   return (
     <form onSubmit={handleSubmit}>
 
       <div className="space-y-12 md:ml-10 md:mr-10">
         <div className="border-b border-gray-900/10 pb-12">
-        <FirebaseImageUpload handleImageUpdate={handleImageUpdate} />
+       
           <h2 className="text-base font-semibold leading-7 text-gray-900">Personal Information</h2>
           <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
        
@@ -117,7 +108,7 @@ const handleImageUpdate = (imageURL) => {
                 />
               </div>
             </div>
-            {/* Include other fields similarly */}
+           
             <div className="sm:col-span-4">
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
@@ -130,6 +121,22 @@ const handleImageUpdate = (imageURL) => {
                   autoComplete="email"
                   onChange={handleInputChange}
                   value={formData.email}
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
+            <div className="sm:col-span-4">
+              <label htmlFor="first-name" className="block text-sm font-medium leading-6 text-gray-900">
+              password
+              </label>
+              <div className="mt-2">
+                <input
+                  type="text"
+                  name="password"
+                  id="password"
+                  autoComplete="password"
+                  onChange={handleInputChange}
+                  value={formData.password}
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                 />
               </div>

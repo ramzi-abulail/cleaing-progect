@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import '../CSS/HeroSlider.css'; // Create a separate CSS file for HeroSlider (HeroSlider.css)
-import img1 from '../img/img1.jpg';
-import img2 from '../img/img2.jpg';
-import img3 from '../img/img3.jpg';
+import '../CSS/HeroSlider.css';
+import img1 from '../img/clean1.jpeg';
+import img2 from '../img/clean2.jpeg';
+import img3 from '../img/clean4.webp';
+import { Link } from 'react-router-dom';
 
 const HeroSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const totalSlides = 3; // Total number of slides
+  const totalSlides = 3;
 
   const nextSlide = () => {
     setCurrentSlide((currentSlide + 1) % totalSlides);
@@ -24,26 +25,25 @@ const HeroSlider = () => {
   const slideContent = [
     {
       image: img1,
-      text: 'Easy Clean',
+      text: 'Elevating Cleanliness, Every Detail Matters',
     },
     {
       image: img2,
-      text: 'Professional Work',
+      text: 'Your Trusted Partners in Cleaning Excellence',
     },
     {
       image: img3,
-      text: 'Low Price',
+      text: 'Experience the Clean Difference',
     },
   ];
 
   const slideStyles = {
     position: 'relative',
     width: '100%',
-    height: '400px', // Update with your desired height
+    height: '30rem',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    /* Other necessary styles for the hero slide */
-    /* Add background shadow overlay */
+
     ':after': {
       content: '""',
       position: 'absolute',
@@ -51,7 +51,7 @@ const HeroSlider = () => {
       left: 0,
       width: '100%',
       height: '100%',
-      background: 'rgba(0, 0, 0, 0.5)', // Adjust the alpha value (0.5) for transparency
+      background: 'rgba(0, 0, 0, 0.5)',
     },
   };
 
@@ -62,15 +62,17 @@ const HeroSlider = () => {
     transform: 'translate(-50%, -50%)',
     textAlign: 'center',
     color: 'white',
-    fontSize: '2em', 
-    width: '100%', 
+    fontSize: '40px',
+    width: '100%',
     maxWidth: '100%',
-    height: '100%', 
-    padding: '170px', 
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', 
-   
+    height: '100%',
+    padding: '170px',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    fontFamily: "'Barlow', sans-serif",
+
+
   };
-  
+
 
   return (
     <div className=' shadow-2xl mx-6'>
@@ -91,6 +93,16 @@ const HeroSlider = () => {
             >
               <div className="text-overlay" style={textOverlayStyles}>
                 <h2>{slide.text}</h2>
+              </div>
+              <div className="my-4 z-50">
+                <Link to={"/ServicesCardHome"}>   <button
+
+                  type="button"
+                  className="py-3 mt-20 text-white bg-[#5354a8b0] hover:bg-[#536496] shadow-lg shadow-blue-500/50 dark:shadow-lg  font-medium rounded-lg text-sm px-4 text-center border border-blue-100"
+                >
+                  OUR SERVICES
+                </button></Link>
+
               </div>
             </div>
           </div>

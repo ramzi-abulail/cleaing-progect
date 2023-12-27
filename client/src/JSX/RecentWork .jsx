@@ -60,7 +60,7 @@ const RecentWork = () => {
         <div className=' shadow-2xl mx-6 '>
 
 
-            <div className='text-center font-bold text-3xl pt-8 text-blue-500 '>
+            <div className='text-center font-bold text-3xl pt-8 text-blue-800 '>
                     <a className=''> RecentWork </a>
                 </div>
             <Carousel

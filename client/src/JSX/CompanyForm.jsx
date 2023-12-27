@@ -24,6 +24,7 @@ const navigate = useNavigate();
     companyName: '',
     city: '',
     streetName: '',
+    serviceName:'company Cleaning',
   });
 
   const handleChange = (e) => {

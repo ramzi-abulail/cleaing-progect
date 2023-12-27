@@ -28,20 +28,24 @@ const ServiceDetailsHome = (props) => {
         fetchServiceDetails();
     }, [id]);
 
+
+
+
     const handleClick = () => {
-        // Check different service names to navigate accordingly
-        switch (service.serviceName) {
+        console.log('Service Name:', service.serviceName);
+    
+        switch (service.serviceName.toLowerCase()) {
             case 'house cleaning':
-                navigate('/HouseForm'); // Replace with the actual path of HouseCleaningComponent
+                navigate('/HouseForm');
                 break;
             case 'office cleaning':
-                navigate('/OfficeForm'); // Replace with the actual path of OfficeCleaningComponent
+                navigate('/OfficeForm');
                 break;
             case 'company cleaning':
-                navigate('/CompanyForm'); // Replace with the actual path of CompanyCleaningComponent
+                navigate('/CompanyForm');
                 break;
             case 'school cleaning':
-                navigate('/SchoolForm1'); // Replace with the actual path of CompanyCleaningComponent
+                navigate('/SchoolForm1');
                 break;
             default:
                 console.error('Service does not match');
@@ -55,7 +59,7 @@ const ServiceDetailsHome = (props) => {
                 <div className="border rounded p-4">
                     <div className='flex flex-col items-center'>
                         {service.serviceName && (
-                            <div className='text-blue-500 font-bold text-5xl my-10'>
+                            <div className='text-blue-800 font-bold text-5xl my-10'>
                                 {service.serviceName}
                             </div>
                         )}
@@ -66,14 +70,14 @@ const ServiceDetailsHome = (props) => {
                         <div className='flex flex-col  mr-20 mt-20 mx-16'>
                             {service.details && (
                                 <>
-                                    <h2 className=' font-bold text-3xl text-blue-500'>Service Details</h2>
+                                    <h2 className=' font-bold text-3xl text-blue-800'>Service Details</h2>
                                     <p className='text-black text-xl'>{service.details}</p>
                                 </>
                             )}
 
                             {service.cleaningTypes && service.cleaningTypes.some(type => type.trim() !== '') && (
                                 <div>
-                                    <h3 className='text-blue-500 font-bold text-3xl mt-4'>Cleaning Types:</h3>
+                                    <h3 className='text-blue-800 font-bold text-3xl mt-4'>Cleaning Types:</h3>
                                     <ul className='list-disc pl-6'>
                                         {service.cleaningTypes.map((type, index) => {
                                             if (type.trim() !== '') {
@@ -88,6 +92,7 @@ const ServiceDetailsHome = (props) => {
                         </div>
                     )}
                     <div className="ml-[1100px] my-4">
+
 
                         <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-60 h-12">
 

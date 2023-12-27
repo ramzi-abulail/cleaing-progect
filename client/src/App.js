@@ -31,6 +31,8 @@ import ServiceDetailsHome from './JSX/ServiceDetailsHome';
 import OfficeForm from './JSX/OfficeForm';
 import SchoolForm1 from './JSX/SchoolForm';
 import FirebaseImageUpload from './FireBase/FirebaseImageUpload';
+import PaymentInformation from './JSX/PaymentInformation';
+
 
 
 
@@ -38,14 +40,18 @@ import FirebaseImageUpload from './FireBase/FirebaseImageUpload';
 
 
 function App() {
-  const [role, setRole] = useState(0);
-
+  const [role, setRole] = useState(() => {
+    const storedRole = localStorage.getItem('role');
+    return storedRole ? parseInt(storedRole, 10) : 0;
+  });
+  
   useEffect(() => {
     if (localStorage) {
       const storedRole = localStorage.getItem('role');
       setRole(parseInt(storedRole, 10));
     }
   }, []);
+  
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -58,9 +64,10 @@ function App() {
 
         <BrowserRouter>
           <NavBar />
-   
+
           <Routes>
             <Route path='/' element={<Home />} />
+          
             <Route path='/Login' element={<Login />} />
             <Route path='/Signup' element={<Signup />} />
             <Route path='/LoginAdmin' element={<LoginAdmin />} />
@@ -113,6 +120,8 @@ function App() {
             <Route path='/CompanyForm' element={<CompanyForm />} />
             <Route path='/SchoolForm1' element={<SchoolForm1 />} />
             <Route path='/HouseForm' element={<HouseForm />} />
+            <Route path='/PaymentInformation' element={<PaymentInformation />} />
+            
           </Routes>
           <Footer />
       

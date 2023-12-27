@@ -29,6 +29,7 @@ function SchoolForm1() {
     numOfRoomsForTeachers: '',
     numOfGyms: '',
     numOfSwimmingPools: '',
+    serviceName:'school Cleaning',
   });
 
   const handleChange = (e) => {

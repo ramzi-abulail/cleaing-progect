@@ -1,29 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import img16 from '../img/img16.svg'
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
 const Profile = () => {
   const [userData, setUserData] = useState({ photo: null, details: null });
-  const [photo, setPhoto] = useState('');
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      // Assuming you have a JSON server running on http://localhost:3000
-      await axios.post('http://localhost:3001/users', { url: photo });
-      // Handle success by updating the state or fetching the updated data again
-      console.log('Photo added successfully!');
-    } catch (error) {
-      // Handle error
-      console.error('Error adding photo:', error);
-    }
-  };
-
-
-
 
   useEffect(() => {
     axios.get(`http://localhost:3001/users?id=${localStorage.id}`)
@@ -39,57 +22,83 @@ const Profile = () => {
       });
   }, []);
 
-
+ 
 
 
 
   return (
-    <div className="flex flex-raw">
+    <div className="flex flex-row">
       {/* slidbar */}
-      <div className="bg-gray-800 text-white w-64 h-screen flex flex-col">
-        <div className="p-4">
-          <h1 className="text-2xl font-bold">Sidebar</h1>
-          <ul className="space-y-2 font-medium">
+      <div className="text-white w-64 h-screen flex flex-col rounded-3xl ml-1 mb-4 shadow-2xl bg-blue-900 ">
+
+        <div className="mt-10 ml-4 mr-4">
+          <ul className="font-medium flex flex-col gap-14 ">
             <Link to="/Profile">
-              <li className="py-2 hover:bg-gray-700 cursor-pointer">
-                Profile
+              <li className=" hover:bg-emerald-300  hover:text-black cursor-pointer rounded-3xl p-2 ">
+                PROFILE
               </li>
             </Link>
-            <Link to="/ProfileForm"> <li className="py-2 hover:bg-gray-700 cursor-pointer">
-              Edit Profile
-            </li></Link>
-            <Link to="/OurServices">
-              <li className="py-2 hover:bg-gray-700 cursor-pointer">
-                Order
-              </li>
-            </Link>
+            <li className="mt-4">
+              <Link to="/ProfileForm">
+                <li className=" hover:bg-emerald-300 hover:text-black cursor-pointer rounded-3xl p-2  ">
+                  EDIT PROFILE
+                </li>
+              </Link>
+            </li>
+            <li className="mt-4">
+              <Link to="/PaymentInformation">
+                <li className=" hover:bg-emerald-300 hover:text-black cursor-pointer rounded-3xl p-2 ">
+                  ORDER
+                </li>
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
-      <main className=" flex flex-col p-8">
-        {/* Display uploaded photo */}
 
-        
+
+
+      <main className=" flex flex-row justify-center text-center p-8">
         {/* User details */}
-        <div className=" ml-6">
-
-          {userData && (
-            <div className='text-black font-bold '>
-              <p>firstName: {userData.firstName}</p>
-              <p>lastName: {userData.lastName}</p>
-              <p>Email: {userData.email}</p>
-
-              <section>
-                <h2 className="text-lg font-semibold mt-4">Additional Information</h2>
-                <p>Phone: {userData.phone}</p>
-                <p>City: {userData.city}</p>
-                <p>Country: {userData.country}</p>
-                <p>streetName: {userData.StreetName}</p>
-              </section>
+        {userData && (
+          <div className=" flex flex-col rounded-xl shadow-xl border-4 border-opacity-40 border-blue-800 px-40 py-8 mx-64 text-center items-center h-[30rem]">
+            <div className='w-40  ' >
+              <img src={img16} className='rounded-full' />
             </div>
-          )}
 
-        </div>
+            <div className=" flex flex-col gap-5 justify-center mt-4 ">
+              <div className='flex flex-row'>
+                <i class="fa-solid fa-user mt-2"></i>
+                <p className="text-3xl font-semibold ml-4 ">{userData.firstName} {userData.lastName}</p>
+
+              </div>
+
+              <div className='flex flex-row'>
+                <i class="fa-solid fa-envelope mt-2"></i>
+                <p className="text-xl font-semibold ml-4 "> {userData.email}</p>
+              </div>
+
+            </div>
+
+
+            <div className=" flex flex-col mt-6 gap-2 justify-center">
+              <div className='flex flex-row'>
+                <i class="fa-solid fa-phone mt-2"></i>
+                <p className="text-lg font-semibold ml-4"> {userData.phone}</p>
+              </div>
+              <div className='flex flex-row '>
+                <i class="fa-solid fa-location-dot mt-2"></i>
+                <p className="text-lg font-semibold ml-4">{userData.city} | {userData.country}</p>
+              </div>
+              <div className='flex flex-row '>
+                <i class="fa-solid fa-map-location-dot mt-2"></i>
+                <p className="text-lg  font-semibold ml-4">{userData.StreetName}</p>
+              </div>
+
+            </div>
+          </div>
+        )}
+
 
       </main>
 

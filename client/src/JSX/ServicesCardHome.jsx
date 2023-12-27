@@ -44,54 +44,50 @@ const ServicesCardHome = () => {
     };
 
     return (
-        <div className="container mt-8 md:w-[1200px] ml-28">
-            <div className='mt-20 ml-36'>
-                <div className='text-center font-bold text-3xl mb-2 text-blue-500'>
-                    <a>Our Services</a>
-                 </div>
-                <div className='text-center font-bold text-2xl mb-4 text-blue-500'>
-                    <a>What We Are Offering</a>
-                </div>
-
+        <div className="container mt-8 md:w-[1200px] mx-auto px-4">
+        <div className='mt-20'>
+            <div className='text-center font-bold text-3xl mb-2 text-blue-800'>
+                <a>Our Services</a>
             </div>
-            <div className="mt-8 grid grid-cols-4 md-w-[1200px] gap-20   ">
-                {paginatedServices.map((service) => (
-
-                    <div key={service.id} className="border shadow-2xl md:w-[300px] md:h-[320px] mb-20 mt-20  text-2xl text-center rounded-3xl ">
-                        
-                        <img src={service.photo} alt={service.name} className="mb-2 md:w-[300px] md:h-[200px] rounded-3xl p-2 " />
-                        
-                        <p className="font-bold">{service.name}</p>
-                           
-                           < p>{service.cardName}</p>
-                        
-                        <div className="flex justify-between mt-4 ">
-                        
-                            <Link to={`/ServiceDetailsHome/${service.id}`}
-                                className="bg-blue-500 text-white md:h-10 md:w-60 text-center rounded-2xl ml-8 " onClick={handleClick} >
+            <div className='text-center font-bold text-2xl mb-4 text-blue-800'>
+                <a>What We Are Offering</a>
+            </div>
+        </div>
+        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {paginatedServices.map((service) => (
+                <div key={service.id} className="border shadow-2xl mb-8 md:h-[300px] text-center rounded-tr-3xl rounded-bl-3xl">
+                    <img src={service.photo} alt={service.name} className="w-full h-[200px] rounded-tr-3xl rounded-bl-3xl   p-3 " />
+                    <div className="p-4 font-bold text-xl">
+                        <p>{service.name}</p>
+                        <p>{service.cardName}</p>
+                        <div className="flex justify-center mt-2 ">
+                            <Link
+                                to={`/ServiceDetailsHome/${service.id}`}
+                                className=" hover:bg-[#5354a8dd] bg-transparent border-2 border-[#5354a8dd] text-[#5354a8dd] translate-x-3 hover:text-white h-9 w-32 text-center rounded-lg pt-1"
+                                onClick={handleClick}
+                            >
                                 Details
                             </Link>
                         </div>
                     </div>
-                ))}
-
-            </div>
-            {/* Pagination Buttons */}
-            <div className="flex justify-center ml-20">
-                {pageNumbers.map((page) => (
-                    <button
-                        key={page}
-                        onClick={() => handlePageChange(page - 1)}
-                        className={`px-3 h-8 rounded-full focus:outline-none ${currentPage === page - 1 ? 'bg-blue-500 text-white' : 'bg-gray-200 text-black '
-                            }`}
-                    >
-                        {page}
-                    </button>
-                ))}
-            </div>
-
-
+                </div>
+            ))}
         </div>
+        {/* Pagination Buttons */}
+        <div className="flex justify-center mt-8">
+            {pageNumbers.map((page) => (
+                <button
+                    key={page}
+                    onClick={() => handlePageChange(page - 1)}
+                    className={`px-3 h-8 rounded-full focus:outline-none ${
+                        currentPage === page - 1 ? 'bg-blue-800 text-white' : 'bg-gray-200 text-black'
+                    }`}
+                >
+                    {page}
+                </button>
+            ))}
+        </div>
+    </div>
 
     );
 };

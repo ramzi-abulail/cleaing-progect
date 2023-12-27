@@ -24,6 +24,7 @@ function SchoolForm() {
         livingroom: '0',
         extraRooms: '0',
         cleaningFrequency: '--',
+        serviceName:'House Cleaning',
     });
 
     const handleDateChange = (date) => {

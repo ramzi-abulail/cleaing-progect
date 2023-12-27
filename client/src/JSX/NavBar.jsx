@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../img/logo.png';
+import logo11 from '../img/logo11.png';
 import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -26,11 +26,11 @@ function NavBar() {
 
   return (
     <>
-      <div className={`bg-blue-500 ${(isHomePage) ? "hidden" : ""}`}>
+      <div className={`bg-blue-900 ${(isHomePage) ? "hidden" : ""}`}>
         <nav className={`ml-4 md:ml-20 mb-6 md:w-[1360px] `}>
           <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
             <Link to="/" className="flex items-center">
-              <img src={logo} className="h-16 md:h-20 mr-3" alt="Logo" />
+              <img src={logo11} className="h-20 md:h-28 mr-3" alt="Logo" />
             </Link>
 
             <div className="flex md:order-2 items-center relative">
@@ -38,12 +38,12 @@ function NavBar() {
                 <button
                   onClick={() => setIsOpen(!isOpen)}
                   type="button"
-                  className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-4 py-2.5 text-center me-2 mb-2 border border-blue-300"
+                  className="text-white bg-blue-900 hover:bg- shadow-lg shadow-blue-2000/50 dark:shadow-lg  font-medium rounded-lg text-sm px-4 py-2.5 text-center me-2 mb-2 border border-blue-100"
                 >
                   login / sign in
                 </button>
                 {isOpen && (
-                  <div className="absolute z-10 right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg py-1">
+                  <div className="absolute z-10 right-0 mt-2 w-48 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-700 rounded-lg shadow-lg py-1 ">
                     {isGuest && (
                       <Link to="/SignUp" onClick={() => setIsOpen(false)} className="block text-left px-4 py-2 text-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 w-full">
                         Sign Up
@@ -77,26 +77,26 @@ function NavBar() {
           <li>
             <Link
               to="/"
-              className="py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
+              className="py-2 px-3 text-white rounde hover:text-emerald-300"
               aria-current="page"
             >
-              Home
+          HOME
             </Link>
           </li>
           <li>
             <Link
               to="/AboutUs"
-              className="py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
+              className="py-2 px-3 text-white rounded hover:text-emerald-300"
             >
-              About
+              ABOUT
             </Link>
           </li>
           <li>
             <Link
               to="/ServicesCardHome"
-              className="py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
+              className="py-2 px-3 text-white rounded hover:text-emerald-300"
             >
-              Services
+               SERVICES
             </Link>
           </li>
           {isUser && (
@@ -104,25 +104,25 @@ function NavBar() {
               <li>
                 <Link
                   to="/ContactUs"
-                  className="py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
+                  className="py-2 px-3 text-white rounded hover:text-emerald-300"
                 >
-                  Contact
+               CONTACT
                 </Link>
               </li>
               <li>
                 <Link
                   to="/Profile"
-                  className="py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
+                  className="py-2 px-3 text-white rounded hover:text-emerald-300"
                 >
-                  Profile
+                   PROFILE
                 </Link>
               </li>
               <li>
                 <Link
                   to="/Payment2"
-                  className="py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700"
+                  className="py-2 px-3 text-white rounded hover:text-emerald-300"
                 >
-                  Payment
+                PAYMENT
                 </Link>
               </li>
             </>
