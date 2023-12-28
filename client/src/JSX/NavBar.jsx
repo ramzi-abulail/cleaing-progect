@@ -88,7 +88,7 @@ function NavBar() {
               to="/AboutUs"
               className="py-2 px-3 text-white rounded hover:text-emerald-300"
             >
-              ABOUT
+             OUR TEAM
             </Link>
           </li>
           <li>
@@ -117,14 +117,7 @@ function NavBar() {
                    PROFILE
                 </Link>
               </li>
-              <li>
-                <Link
-                  to="/Payment2"
-                  className="py-2 px-3 text-white rounded hover:text-emerald-300"
-                >
-                PAYMENT
-                </Link>
-              </li>
+              
             </>
           )}
         </ul>

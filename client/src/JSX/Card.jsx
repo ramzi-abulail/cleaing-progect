@@ -138,7 +138,7 @@ const Card = () => {
   const pageNumbers = Array.from(Array(totalPages).keys());
 
   return (
-    <div className='bg-white md:w-[800px] mx-auto  shadow-2xl mb-10'>
+    <div className='bg-white md:w-[800px] mx-auto  shadow-2xl mb-10  mt-10 border-4 border-opacity-40 border-blue-800  rounded-2xl'>
       <div className="container mx-auto px-20">
         <h1 className="text-3xl font-bold text-center mt-4 text-blue-800 pt-4">Your Feedback</h1>
         <form onSubmit={handleSubmit} className="flex flex-col mt-8">
@@ -154,9 +154,9 @@ const Card = () => {
           </button>
         </form>
 
-        <div className="my-32 mx-auto flex flex-col justify-center z-[] w-full h-80">
+        <div className="my-32 mx-auto flex flex-col justify-center z-[] w-full h-80 ">
           {paginatedCards.map((card) => (
-            <div key={card.id} className="flex flex-row bg-white border rounded-lg shadow-lg w-full h-72 p-4 my-4 justify-between">
+            <div key={card.id} className="flex flex-row bg-white  shadow-lg w-full h-72 p-4 my-4 justify-between border-4 border-opacity-40 border-blue-800 mb-4 rounded-2xl">
               <div className='flex flex-col'>
                 <p className="ml-4 mb-2">{card.firstName} {card.lastName}</p>
                 <p className="mt-2 ml-4 mb-4">Subject: {card.subject}</p>
