@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from '../img/logo.png';
+import logo11 from '../img/logo11.png';
 
 function Footer() {
   const userRole = localStorage.getItem('role');
@@ -16,7 +16,7 @@ function Footer() {
           <div className="md:flex md:justify-between items-center">
             <div className="mb-6 md:mb-0">
               <a href="./">
-                <img src={logo} className="h-16 md:h-24 mr-3" alt="Logo" />
+                <img src={logo11} className="h-20 md:h-28 mr-3" alt="Logo" />
               </a>
             </div>
             <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 sm:gap-6">

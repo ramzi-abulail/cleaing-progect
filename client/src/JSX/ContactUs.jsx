@@ -4,7 +4,7 @@ function ContactUs() {
   return (
     <div>
 
-      <section class=" dark:bg-gray-900 bg-white">
+      <section class=" dark:bg-gray-900 bg-white border-4 border-opacity-40 border-blue-800 mb-4 rounded-2xl w-[800px] mx-auto">
         <div class="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
           <h2 class="mb-4 text-3xl tracking-tight font-extrabold text-center  dark:text-white text-blue-900"> Contact Us</h2>
           <p class="mb-8 lg:mb-16 font-light text-center text-gray-500 dark:text-gray-400 sm:text-xl">Feel Free To Send Message To Us In Case You Have Problem Or You Want Support Us</p>
@@ -22,7 +22,7 @@ function ContactUs() {
               <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
               <textarea id="message"name="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
             </div>
-            <button type="submit" class="text-white  bg-blue-900 hover:bg-blue-700 shadow-lg shadow-blue-400/50 dark:shadow-lg dark:shadow-blue-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">Send </button>
+            <button type="submit" class="py-2 text-white bg-blue-800 hover:bg-blue-700 shadow-lg shadow-blue-500/50 dark:shadow-lg  font-medium rounded-lg text-sm px-4 text-center border border-blue-100">Send </button>
           </form>
         </div>
       </section>

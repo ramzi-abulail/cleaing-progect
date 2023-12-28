@@ -37,10 +37,10 @@ function SchoolForm() {
     };
 
     const calculateTotalPrice = () => {
-        const bedroomPrice = 10; // Price per bedroom
-        const livingRoomPrice = 20; // Price per living room
-        const extraRoomPrice = 15; // Price per extra room
-        const bathroomPrice = 6; // Price per bathroom
+        const bedroomPrice = 10; 
+        const livingRoomPrice = 20; 
+        const extraRoomPrice = 15; 
+        const bathroomPrice = 6; 
     
         const cleaningFrequencyPrices = {
             daily: 20,
@@ -109,8 +109,8 @@ function SchoolForm() {
 
 
     return (
-        <div className="container mx-auto p-4 ">
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto border shadow-2xl p-10">
+        <div className="container mx-auto p-4  ">
+            <form onSubmit={handleSubmit} className="max-w-md mx-auto  shadow-3xl p-10 border-4 border-opacity-40 border-blue-800 mb-4 rounded-2xl">
                 
                     {/* Full Name */}
                     <div className="mb-4 ">

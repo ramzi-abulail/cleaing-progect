@@ -69,28 +69,27 @@ function Payment2() {
     }
   };
 
+  const userId = localStorage.getItem('id')
   useEffect(() => {
-    const fetchPaymentInfo = async () => {
-      try {
-        const response = await axios.get('http://localhost:3001/order');
-        const order = response.data[0]; // Assuming the first order's details
-  
-        setPaymentInfo({
-          totalPrice: order.totalPrice,
-          serviceName: order.serviceName,
-        });
-      } catch (error) {
-        console.error('Error fetching payment info:', error);
-      }
-    };
-  
-    fetchPaymentInfo();
-  }, []);
+      const fetchPaymentInfo = async () => {
+          try {
+              const response = await axios.get(`http://localhost:3001/order?userId=${userId}`);
+              const orders = response.data;
+
+              console.log(response.data);
+              setPaymentInfo(orders);
+          } catch (error) {
+              console.error('Error fetching payment info:', error);
+          }
+      };
+
+      fetchPaymentInfo();
+  }, [userId]);
 
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <form className="bg-blue-50 shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/3" onSubmit={handleSubmit}>
+      <form className="bg-white shadow-2xl  px-8 pt-6 pb-8 mb-4 w-1/3 border-4 border-opacity-40 border-blue-800 rounded-2xl" onSubmit={handleSubmit}>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
             Name on Card
@@ -161,9 +160,8 @@ function Payment2() {
           </button>
         </div>
       </form>
-      <div className='w-80 h-80 shadow-md ml-20 border rounded-lg bg-blue-50'> 
+      <div className='w-80 h-80 shadow-md ml-20  bg-white border-4 border-opacity-40 border-blue-800 rounded-2xl'> 
       <p className=' font-bold text-xl text-center mt-4'> Receipt </p>
-    
         <p className='font-blod text-lg ml-4 mt-10'>Service Name: {paymentInfo.serviceName}</p>
         <p className='font-blod text-lg ml-4 mt-10'>Total Price: {paymentInfo.totalPrice}</p>
         <p className=' font-bold text-xl text-center mt-20'> Thank you </p>

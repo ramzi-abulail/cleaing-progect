@@ -8,7 +8,13 @@ const citiesInJordan = [
   'Zarqa',
   'Jerash',
   'Madaba',
-
+  'Mafraq',
+  'Ajloun',
+  'Balqa',
+  'Karak',
+  'Tafileh',
+  'Ma`an',
+  'Aqaba',
 ];
 
 function CompanyForm() {
@@ -24,6 +30,8 @@ const navigate = useNavigate();
     companyName: '',
     city: '',
     streetName: '',
+    numOfFloors: '',
+    numOfOffices: '',
     serviceName:'company Cleaning',
   });
 
@@ -38,27 +46,60 @@ const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3001/order', formData);
+      // Retrieve ID from local storage
+      const userId = localStorage.getItem('id'); // Assuming 'userId' is the key for the ID
+  
+      // Calculate total price
+      const totalPrice = calculateTotalPrice(formData);
+  
+      // Add the userId and total price to the formData
+      const dataWithUserId = {
+        ...formData,
+        userId: userId, // Adding the userId to the formData object
+        totalPrice: totalPrice, // Adding the totalPrice to the formData object
+      };
+  
+      // Post the form data with additional details
+      await axios.post('http://localhost:3001/order', dataWithUserId);
+  
+      // Clear form fields after submission
       setFormData({
         fullname: '',
         number: '',
         companyName: '',
         city: '',
         streetName: '',
+        numOfFloors: '',
+        numOfOffices: '',
       });
-      
+  
+      // Display success message
       alert('Company information submitted successfully!');
-   
+  
+      // Navigate to the payment page
       navigate('/Payment2');
     } catch (error) {
       console.error('Error creating company:', error);
     }
   };
   
+  
+  const calculateTotalPrice = (formData) => {
+    
+    const baseNumOfFloors = 80;
+    const basenumOfOffices = 25; 
+
+   
+    const numOfFloors = parseInt(formData.numOfFloors) * baseNumOfFloors;
+    const numOfOffices = parseInt(formData.numOfOffices) * basenumOfOffices;
+
+    const totalPrice = numOfFloors + numOfOffices;
+    return totalPrice;
+  };
 
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center items-center">
-      <div className="max-w-md w-full px-6 py-8 bg-white shadow-md rounded-md">
+      <div className="max-w-md w-full px-6 py-8 bg-white shadow-md rounded-md border-4 border-opacity-40 border-blue-800 mb-4 ">
         <h2 className="text-2xl font-bold mb-4 text-center">Clean Your Company</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
@@ -136,6 +177,56 @@ const navigate = useNavigate();
               placeholder="Enter street name"
             />
           </div>
+
+
+          <div className="mb-4">
+            <label htmlFor="numOfFloors" className="block text-gray-700 text-sm font-bold mb-2">
+              numOfFloors
+            </label>
+            <select
+              id="numOfFloors"
+              name="numOfFloors"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              value={formData.numOfFloors}
+              onChange={handleChange}
+            >
+              {[...Array(11).keys()].map((num) => (
+                <option key={num} value={String(num)}>
+                  {num}
+                </option>
+              ))}
+
+            </select>
+          </div>
+
+
+          <div className="mb-4">
+            <label htmlFor="numOfOffices" className="block text-gray-700 text-sm font-bold mb-2">
+            numOfOffices
+            </label>
+            <select
+              id="numOfOffices"
+              name="numOfOffices"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              value={formData.numOfClassrooms}
+              onChange={handleChange}
+            >
+              {[...Array(101).keys()].map((num) => (
+                <option key={num} value={String(num)}>
+                  {num}
+                </option>
+              ))}
+
+            </select>
+          </div>
+
+
+          <div className="mb-4">
+                    <label className="block text-gray-700 text-sm font-bold mb-2">Total Price</label>
+                    <p className="text-gray-700">{`$${calculateTotalPrice(formData)}`}</p>
+                </div>
+
+
           {/* Submit button */}
           <button
             type="submit"

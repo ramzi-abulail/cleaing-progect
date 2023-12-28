@@ -38,7 +38,7 @@ function NavBar() {
                 <button
                   onClick={() => setIsOpen(!isOpen)}
                   type="button"
-                  className="text-white bg-blue-900 hover:bg- shadow-lg shadow-blue-2000/50 dark:shadow-lg  font-medium rounded-lg text-sm px-4 py-2.5 text-center me-2 mb-2 border border-blue-100"
+                  className="py-2 text-white bg-[#5354a8b0] hover:bg-[#536496] shadow-lg shadow-blue-500/50 dark:shadow-lg  font-medium rounded-lg text-sm px-4 text-center border border-blue-100"
                 >
                   login / sign in
                 </button>

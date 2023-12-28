@@ -14,12 +14,11 @@
     {
       "firstName": "Roronoa",
       "lastName": "Zoro",
-      "email": "Zoro@gmail.com",
-      "phone": "234567",
-      "city": "Madaba",
-      "country": "zzxzzzz",
-      "StreetName": "scsdsad",
-      "password": "1234567890",
+      "email": "ramzi@gmail.com",
+      "phone": "0777488060",
+      "country": "wano",
+      "StreetName": "d3x",
+      "password": "0000",
       "id": 2
     },
     {
@@ -102,6 +101,104 @@
       "expiry": "2023-06-01T12:02:23.000Z",
       "cvv": "555",
       "id": 4
+    },
+    {
+      "name": "zoro",
+      "cardNumber": "4444-4444-4444-4444",
+      "expiry": "2023-08-01T11:01:00.000Z",
+      "cvv": "444",
+      "id": 5
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "4444-4444-4444-4444",
+      "expiry": "2023-11-01T11:04:57.000Z",
+      "cvv": "444",
+      "id": 6
+    },
+    {
+      "name": "zoro",
+      "cardNumber": "4444-4444-4444-4444",
+      "expiry": "2023-11-01T11:49:03.000Z",
+      "cvv": "444",
+      "id": 7
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "4444-4444-4444-4444",
+      "expiry": "2023-10-01T11:50:33.000Z",
+      "cvv": "444",
+      "id": 8
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "5555-5555-5555-5555",
+      "expiry": "2023-11-01T20:18:00.000Z",
+      "cvv": "666",
+      "id": 9
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "8888-8888-8888-8888",
+      "expiry": "2023-11-01T20:23:42.000Z",
+      "cvv": "888",
+      "id": 10
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "4444-4444-4444-4444",
+      "expiry": "2023-08-01T20:25:39.000Z",
+      "cvv": "444",
+      "id": 11
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "5555-5555-5555-5555",
+      "expiry": "2023-08-01T20:27:49.000Z",
+      "cvv": "555",
+      "id": 12
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "5555-5555-5555-5555",
+      "expiry": "2023-08-01T20:29:24.000Z",
+      "cvv": "555",
+      "id": 13
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "4444-4444-4444-4444",
+      "expiry": "2023-08-01T20:30:48.000Z",
+      "cvv": "444",
+      "id": 14
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "4444-4444-4444-4444",
+      "expiry": "2023-11-01T20:38:54.000Z",
+      "cvv": "555",
+      "id": 15
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "4444-4444-4444-4444",
+      "expiry": "2023-07-31T21:31:08.000Z",
+      "cvv": "444",
+      "id": 16
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "4444-4444-4444-4444",
+      "expiry": "2023-04-30T21:52:10.000Z",
+      "cvv": "444",
+      "id": 17
+    },
+    {
+      "name": "zoro ",
+      "cardNumber": "4444-4444-4444-4444",
+      "expiry": "2023-07-01T01:49:42.000Z",
+      "cvv": "444",
+      "id": 18
     }
   ],
   "services": [
@@ -196,6 +293,163 @@
       "totalPrice": 2200,
       "userId": "2",
       "id": 2
+    },
+    {
+      "fullName": "zoro",
+      "email": "Zoro@gmail.com",
+      "phoneNumber": "66666",
+      "streetName": "sssweerrr",
+      "apartmentNumber": "100",
+      "selectedDate": "2023-12-30T11:00:18.000Z",
+      "selectedTime": "04:03",
+      "bathrooms": "7",
+      "Bedroom": "5",
+      "livingroom": "3",
+      "extraRooms": "14",
+      "cleaningFrequency": "daily",
+      "serviceName": "House Cleaning",
+      "totalPrice": 382,
+      "userId": "2",
+      "id": 3
+    },
+    {
+      "fullName": "zoro",
+      "email": "Zoro@gmail.com",
+      "phoneNumber": "0777488060",
+      "streetName": "ggggggg",
+      "apartmentNumber": "252",
+      "selectedDate": "2023-12-30T11:04:32.000Z",
+      "selectedTime": "06:04",
+      "bathrooms": "7",
+      "Bedroom": "4",
+      "livingroom": "4",
+      "extraRooms": "15",
+      "cleaningFrequency": "every2weeks",
+      "serviceName": "House Cleaning",
+      "totalPrice": 467,
+      "userId": "2",
+      "id": 4
+    },
+    {
+      "fullname": "zoro",
+      "number": "0777488060",
+      "companyName": "cleanex",
+      "city": "Zarqa",
+      "streetName": "ggggs",
+      "serviceName": "company Cleaning",
+      "userId": null,
+      "id": 5
+    },
+    {
+      "fullName": "zoro",
+      "phone": "0777777777",
+      "businessName": "clean",
+      "numEmployees": "101-500",
+      "squareFootage": "5001-10000",
+      "serviceName": "Office Cleaning",
+      "userId": "2",
+      "totalPrice": 2200,
+      "id": 10
+    },
+    {
+      "fullname": "ramzi abulail",
+      "number": "0777488060",
+      "companyName": "cleanex",
+      "city": "Zarqa",
+      "streetName": "sssweerrr",
+      "serviceName": "company Cleaning",
+      "userId": "2",
+      "id": 11
+    },
+    {
+      "firstName": "ramzi",
+      "lastName": "gold",
+      "number": "0777488060",
+      "schoolName": "ddddddd",
+      "city": "Zarqa",
+      "streetName": "ddwwwww",
+      "numOfClassrooms": "96",
+      "numOfFloors": "7",
+      "numOfSchoolYards": "7",
+      "numOfRoomsForTeachers": "7",
+      "numOfGyms": "6",
+      "numOfSwimmingPools": "4",
+      "serviceName": "school Cleaning",
+      "totalPrice": 3280,
+      "id": 12
+    },
+    {
+      "firstName": "Roronoa",
+      "lastName": "Zoro",
+      "number": "0777488060",
+      "schoolName": "hhhhhh",
+      "city": "Jerash",
+      "streetName": "ggggs",
+      "numOfClassrooms": "16",
+      "numOfFloors": "6",
+      "numOfSchoolYards": "6",
+      "numOfRoomsForTeachers": "6",
+      "numOfGyms": "3",
+      "numOfSwimmingPools": "5",
+      "serviceName": "school Cleaning",
+      "totalPrice": 1810,
+      "userId": "2",
+      "id": 13
+    },
+    {
+      "fullname": "",
+      "number": "",
+      "companyName": "",
+      "city": "",
+      "streetName": "",
+      "numOfFloors": "3",
+      "numOfOffices": "30",
+      "serviceName": "company Cleaning",
+      "userId": "2",
+      "id": 14
+    },
+    {
+      "fullname": "zoro",
+      "number": "0777488060",
+      "companyName": "cleanex",
+      "city": "Jerash",
+      "streetName": "ggggggg",
+      "numOfFloors": "6",
+      "numOfOffices": "17",
+      "serviceName": "company Cleaning",
+      "userId": "2",
+      "totalPrice": 905,
+      "id": 15
+    },
+    {
+      "fullName": "zoro",
+      "email": "Zoro@gmail.com",
+      "phoneNumber": "0777488060",
+      "streetName": "ggggs",
+      "apartmentNumber": "100",
+      "selectedDate": "2024-01-06T01:49:00.000Z",
+      "selectedTime": "04:04",
+      "bathrooms": "9",
+      "Bedroom": "9",
+      "livingroom": "5",
+      "extraRooms": "19",
+      "cleaningFrequency": "daily",
+      "serviceName": "House Cleaning",
+      "totalPrice": 549,
+      "id": 16
+    },
+    {
+      "fullname": "zoro",
+      "number": "0777488060",
+      "companyName": "cleanex",
+      "city": "Balqa",
+      "streetName": "ggggggg",
+      "numOfFloors": "8",
+      "numOfOffices": "15",
+      "serviceName": "company Cleaning",
+      "userId": "2",
+      "totalPrice": 1015,
+      "id": 17
     }
   ]
 }

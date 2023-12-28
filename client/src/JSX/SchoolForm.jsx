@@ -51,7 +51,10 @@ function SchoolForm1() {
     e.preventDefault();
     try {
       const totalPrice = calculateTotalPrice(formData); // Calculate total price
-      const dataWithTotalPrice = { ...formData, totalPrice }; // Add totalPrice to form data
+      const id = localStorage.getItem('id'); // Get ID from local storage
+  
+      const dataWithTotalPrice = { ...formData, totalPrice, userId: id }; // Add totalPrice and userId to form data
+  
       await axios.post('http://localhost:3001/order', dataWithTotalPrice);
       // Reset form data after submission
       setFormData({
@@ -98,7 +101,7 @@ function SchoolForm1() {
 
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center items-center">
-      <div className="max-w-md w-full px-6 py-8 bg-white shadow-md rounded-md">
+      <div className="max-w-md w-full px-6 py-8 bg-white shadow-md rounded-md border-4 border-opacity-40 border-blue-800 mb-4 rounded-2xl">
         <h2 className="text-2xl font-bold mb-4 text-center">School Information</h2>
         <a className='text-l font-bold mt-4 mb-10'>please fill the form for do order  :</a>
         <form onSubmit={handleSubmit}>

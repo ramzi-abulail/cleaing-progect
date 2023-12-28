@@ -12,32 +12,43 @@ function OfficeForm() {
     businessName: '',
     numEmployees: '',
     squareFootage: '',
-    serviceName:'Office Cleaning',
-    });
+    serviceName: 'Office Cleaning',
+  });
 
-  const [totalPrice, settotalPrice] = useState(0);
+  const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const idFromLocalStorage = localStorage.getItem('id');
+    if (idFromLocalStorage) {
+      // Set the user ID from localStorage to formData
+      setFormData((prevFormData) => ({
+        ...prevFormData,
+        userId: idFromLocalStorage,
+      }));
+    }
+  }, []);
+
   const handleCreate = async (e) => {
     e.preventDefault();
     try {
-      // Include the price in the formData before sending to the server
       const dataToSend = {
         ...formData,
-        totalPrice: totalPrice, // Add the price to the form data
+        totalPrice: totalPrice,
       };
 
       const response = await axios.post('http://localhost:3001/order', dataToSend);
       console.log('Data sent:', response.data);
 
-      // Reset form fields after successful submission
       setFormData({
         fullName: '',
         phone: '',
         businessName: '',
         numEmployees: '',
         squareFootage: '',
+        serviceName: 'Office Cleaning',
       });
-      settotalPrice(0); // Reset price
+      setTotalPrice(0);
       navigate('/Payment2');
     } catch (error) {
       console.error('Error creating office:', error);
@@ -60,18 +71,15 @@ function OfficeForm() {
         '1000-2000': 600,
         '2001-5000': 800,
         '5001-10000': 1200,
-        // Add more options for square footage
-
         '1-50': 400,
         '51-100': 600,
         '101-500': 1000,
-        // Add more options for number of employees
       };
 
       const calculatedPrice =
         (priceMap[squareFootage] || 0) + (priceMap[numEmployees] || 0);
 
-        settotalPrice(calculatedPrice);
+      setTotalPrice(calculatedPrice);
     };
 
     calculatePrice();
@@ -81,7 +89,7 @@ function OfficeForm() {
 
   return (
     <div className="bg-gray-100 min-h-screen flex justify-center items-center">
-      <div className="max-w-md w-full px-6 py-8 bg-white shadow-md rounded-md">
+      <div className="max-w-md w-full px-6 py-8 bg-white shadow-md  border-4 border-opacity-40 border-blue-800 mb-4 rounded-2xl">
         <h2 className="text-2xl font-bold mb-4 text-center">Office Information</h2>
         <a className='text-l font-bold mt-4 mb-10'>please fill the form for do order for your office :</a>
         <form onSubmit={handleCreate}>
@@ -144,7 +152,7 @@ function OfficeForm() {
               <option value="1-50">1-50</option>
               <option value="51-100">51-100</option>
               <option value="101-500">101-500</option>
-              {/* Add more options as needed */}
+          
             </select>
           </div>
 
